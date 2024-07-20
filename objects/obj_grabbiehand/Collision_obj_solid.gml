@@ -1,0 +1,2 @@
+if (!grabbing)
+	movingupwards = true;

@@ -1,0 +1,10 @@
+selected = 0;
+lightX = 96;
+abletomove = false;
+alarm[0] = 10;
+depth = 250;
+xi = 480;
+yi = 600;
+drawx = room_width / 2;
+showtext = false;
+_message = "";

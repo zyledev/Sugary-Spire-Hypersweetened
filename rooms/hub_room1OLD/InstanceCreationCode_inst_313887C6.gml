@@ -1,0 +1,2 @@
+targetRoom = devroom
+targetDoor = "A"

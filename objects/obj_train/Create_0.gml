@@ -1,0 +1,12 @@
+start_x = xstart;
+start_y = ystart;
+movespeed = 10;
+hsp = movespeed * image_xscale;
+vsp = 0;
+grav = 0.2;
+countdown = 100;
+image_speed = 0.35;
+drop = true;
+grounded = false;
+rubberband = 0;
+go = 0;

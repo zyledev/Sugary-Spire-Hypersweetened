@@ -1,0 +1,1 @@
+BoxContent = obj_confecticrack;

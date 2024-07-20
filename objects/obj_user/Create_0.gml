@@ -1,0 +1,2 @@
+message = "";
+selected = 0;

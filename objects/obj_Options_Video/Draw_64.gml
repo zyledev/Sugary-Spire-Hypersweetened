@@ -1,0 +1,18 @@
+draw_set_halign(fa_center);
+draw_set_font(global.font);
+draw_option(150, 30, "BACK", optionselected == video_selected.back);
+draw_option(480, 100, "WINDOW MODE", optionselected == video_selected.fullscreen);
+draw_option(280, 150, "WINDOWED", !optionsaved_fullscreen);
+draw_option(680, 150, "FULLSCREEN", optionsaved_fullscreen);
+draw_option(480, 200, "RESOLUTION", optionselected == video_selected.resolution);
+draw_option(250, 250, "480X260", optionsaved_resolution == 0);
+draw_option(480, 250, "960X540", optionsaved_resolution == 1);
+draw_option(710, 250, "1280X720", optionsaved_resolution == 2);
+draw_option(480, 300, "SMOOTH CAM", optionselected == video_selected.smoothcam);
+draw_option(380, 350, "ON", optionsaved_smoothcam);
+draw_option(580, 350, "OFF", !optionsaved_smoothcam);
+draw_option(480, 400, "SCREEN TILT", optionselected == video_selected.screentilt);
+draw_option(380, 450, "ON", optionsaved_screentilt);
+draw_option(580, 450, "OFF", !optionsaved_screentilt);
+draw_set_font(global.smallfont);
+draw_text(480, 512, subtitle);

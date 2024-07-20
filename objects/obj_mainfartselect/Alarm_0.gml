@@ -1,0 +1,2 @@
+abletomove = true;
+showtext = true;
