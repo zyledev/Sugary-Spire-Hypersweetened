@@ -1,11 +1,6 @@
 function scr_player_machslide()
 {
-	if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-		hsp = xscale * movespeed;
-	else if (place_meeting(x, y + 1, obj_railh))
-		hsp = (xscale * movespeed) - 5;
-	else if (place_meeting(x, y + 1, obj_railh2))
-		hsp = (xscale * movespeed) + 5;
+	hsp = xscale * movespeed;
 	move = key_right + key_left;
 	if (movespeed >= 0 && sprite_index != spr_player_hurtroll)
 		movespeed -= 0.4;
@@ -46,12 +41,7 @@ function scr_player_machslide()
 		xscale *= -1;
 		instance_create(x, y, obj_jumpdust);
 	}
-	if (mach2 == 0)
-	{
-		if (!instance_exists(obj_slidecloud) && grounded)
-			instance_create(x, y, obj_slidecloud);
-	}
-	else if (mach2 >= 35)
+	if (mach2 >= 35)
 	{
 		if (!instance_exists(obj_dashcloud) && grounded)
 			instance_create(x, y, obj_dashcloud);

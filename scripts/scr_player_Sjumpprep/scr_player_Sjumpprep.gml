@@ -5,23 +5,13 @@ function scr_player_Sjumpprep()
 	move = key_left + key_right;
 	if (sprite_index == spr_player_superjumpprep)
 	{
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = xscale * movespeed;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (xscale * movespeed) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (xscale * movespeed) + 5;
+		hsp = xscale * movespeed;
 		if (movespeed >= 0)
 			movespeed -= 0.8;
 	}
 	if (sprite_index == spr_player_superjumppreplight || sprite_index == spr_player_superjumpright || sprite_index == spr_player_superjumpleft)
 	{
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = move * 2;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (move * 2) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (move * 2) + 5;
+		hsp = move * 2;
 	}
 	if (sprite_index != spr_player_superjumpprep)
 	{

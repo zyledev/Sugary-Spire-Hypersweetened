@@ -1,11 +1,6 @@
 function scr_player_crouchslide()
 {
-	if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-		hsp = xscale * movespeed;
-	else if (place_meeting(x, y + 1, obj_railh))
-		hsp = (xscale * movespeed) - 5;
-	else if (place_meeting(x, y + 1, obj_railh2))
-		hsp = (xscale * movespeed) + 5;
+	hsp = xscale * movespeed;
 	if (movespeed >= 0 && !scr_slope() && grounded)
 		movespeed -= 0.2;
 	mask_index = spr_crouchmask;
@@ -74,7 +69,5 @@ function scr_player_crouchslide()
 			}
 		}
 	}
-	if (!instance_exists(obj_slidecloud) && grounded && movespeed > 5)
-		instance_create(x, y, obj_slidecloud);
 	image_speed = 0.35;
 }

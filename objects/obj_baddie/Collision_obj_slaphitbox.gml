@@ -1,7 +1,6 @@
 if (object_index != obj_charcherry)
 {
 	scr_sound(sound_slaphit);
-	instance_create(x + (obj_player.xscale * 40), y, obj_punchdust);
 	if (obj_player.character == "P")
 	{
 		if (!global.cane)

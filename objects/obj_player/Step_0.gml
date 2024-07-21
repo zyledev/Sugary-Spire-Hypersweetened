@@ -120,13 +120,6 @@ if (suplexmove && grounded)
 }
 if (obj_player.state != states.handstandjump)
 	grav = 0.5;
-if (sprite_index == spr_player_idlevomit && image_index > 28 && image_index < 43)
-	instance_create(x + random_range(-5, 5), y + 46, obj_vomit);
-if (sprite_index == spr_player_idlevomitblood && image_index > 28 && image_index < 43)
-{
-	with (instance_create(x + random_range(-5, 5), y + 46, obj_vomit))
-		sprite_index = spr_vomit2;
-}
 if (angry && !instance_exists(obj_angrycloud) && obj_player.state == states.normal)
 	instance_create(x, y, obj_angrycloud);
 global.combotime = clamp(global.combotime, 0, 60);
@@ -210,11 +203,11 @@ if (toomuchalarm1 <= 0 && (state == states.mach3 || state == states.hookshot || 
 	}
 	toomuchalarm1 = 6;
 }
-if (state != states.bump && state != states.crouch && state != states.boxxedpep && state != states.pistol && state != states.tumble && sprite_index != spr_player_crouchshoot && state != states.Sjumpprep && state != states.chainsaw && state != states.machroll && state != states.hurt && state != states.crouchslide && state != states.crouchjump && sprite_index != spr_pizzano_crouchslide)
+if (state != states.bump && state != states.crouch && state != states.boxxedpep && state != states.pistol && state != states.tumble && state != states.Sjumpprep && state != states.chainsaw && state != states.machroll && state != states.hurt && state != states.crouchslide && state != states.crouchjump && sprite_index != spr_pizzano_crouchslide)
 	mask_index = spr_player_mask;
 else
 	mask_index = spr_crouchmask;
-if (state == states.gottreasure || sprite_index == spr_knightpep_start || sprite_index == spr_knightpep_thunder || state == states.keyget || state == states.door || state == states.victory || state == states.comingoutdoor || state == states.gameover)
+if (state == states.gottreasure || state == states.keyget || state == states.door || state == states.victory || state == states.comingoutdoor || state == states.gameover)
 	cutscene = true;
 else
 	cutscene = false;

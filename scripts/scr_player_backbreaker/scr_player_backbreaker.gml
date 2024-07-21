@@ -64,8 +64,6 @@ function scr_player_backbreaker()
 		sprite_index = tauntstoredsprite;
 		state = tauntstoredstate;
 	}
-	if (floor(image_index) == (image_number - 1) && sprite_index == spr_player_eatspaghetti)
-		state = states.normal;
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_Timesup && !place_meeting(x, y, obj_exitgate))
 	{
 		global.panic = true;
@@ -73,8 +71,6 @@ function scr_player_backbreaker()
 		image_index = 0;
 	}
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_Timesup && place_meeting(x, y, obj_exitgate))
-		state = states.normal;
-	if (floor(image_index) == (image_number - 1) && (sprite_index == spr_player_levelcomplete || sprite_index == spr_playerN_victory))
 		state = states.normal;
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_bossintro)
 		state = states.normal;

@@ -2,14 +2,7 @@ function scr_applejim_bash()
 {
 	if (grounded || (grounded && !place_meeting(x, y, obj_platform)))
 	{
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = image_xscale * movespeed;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (image_xscale * movespeed) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (image_xscale * movespeed) + 5;
-		else
-			hsp = 0;
+		hsp = image_xscale * movespeed;
 	}
 	if (!roaming)
 	{

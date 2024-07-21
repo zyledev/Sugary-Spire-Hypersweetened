@@ -46,6 +46,4 @@ function scr_player_slipnslide()
 	}
 	sprite_index = spr_player_slipnslide;
 	image_speed = 0.35;
-	if (!instance_exists(obj_slidecloud) && grounded && movespeed > 1.5)
-		instance_create(x, y, obj_slidecloud);
 }

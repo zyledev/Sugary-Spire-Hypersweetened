@@ -17,37 +17,11 @@ function scr_player_cheesepep()
 	if (sprite_index == spr_cheesepep_walk || sprite_index == spr_cheesepep_jump || sprite_index == spr_cheesepep_fall || sprite_index == spr_cheesepep_idle)
 	{
 		move = key_left + key_right;
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
 			hsp = move * movespeed;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (move * movespeed) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (move * movespeed) + 5;
 	}
 	else if (grounded)
 	{
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = 0;
-		else if (place_meeting(x, y + 1, obj_railh))
-		{
-			hsp = -5;
-			move = 0;
-		}
-		else if (place_meeting(x, y + 1, obj_railh2))
-		{
-			hsp = 5;
-			move = 0;
-		}
-	}
-	if (place_meeting(x + sign(hsp), y, obj_railv))
-	{
-		grav = 0;
-		state = states.cheesepepstick;
-	}
-	if (place_meeting(x, y - 1, obj_railh) && vsp < 0)
-	{
-		grav = 0;
-		state = states.cheesepepstick;
+		hsp = 0;
 	}
 	if (scr_solid(x, y - 1) && vsp < 0)
 		vsp = grav;

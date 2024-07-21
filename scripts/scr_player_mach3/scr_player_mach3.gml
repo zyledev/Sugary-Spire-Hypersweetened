@@ -8,12 +8,7 @@ function scr_player_mach3()
 				Sjumpcan_doublejump = true;
 			if (windingAnim < 2000)
 				windingAnim++;
-			if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-				hsp = xscale * movespeed;
-			else if (place_meeting(x, y + 1, obj_railh))
-				hsp = (xscale * movespeed) - 5;
-			else if (place_meeting(x, y + 1, obj_railh2))
-				hsp = (xscale * movespeed) + 5;
+			hsp = xscale * movespeed;
 			mach2 = 100;
 			momemtum = true;
 			move = key_right + key_left;

@@ -2,12 +2,7 @@ function scr_player_charge()
 {
 	if (windingAnim < 2000)
 		windingAnim++;
-	if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-		hsp = xscale * movespeed;
-	else if (place_meeting(x, y + 1, obj_railh))
-		hsp = (xscale * movespeed) - 5;
-	else if (place_meeting(x, y + 1, obj_railh2))
-		hsp = (xscale * movespeed) + 5;
+	hsp = xscale * movespeed;
 	if (!key_attack)
 		movespeed -= 0.5;
 	else

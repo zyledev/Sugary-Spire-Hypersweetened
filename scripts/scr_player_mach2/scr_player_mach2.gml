@@ -6,12 +6,7 @@ function scr_player_mach2()
 		case "N":
 			if (windingAnim < 2000)
 				windingAnim++;
-			if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-				hsp = xscale * movespeed;
-			else if (place_meeting(x, y + 1, obj_railh))
-				hsp = (xscale * movespeed) - 5;
-			else if (place_meeting(x, y + 1, obj_railh2))
-				hsp = (xscale * movespeed) + 5;
+			hsp = xscale * movespeed;
 			move2 = key_right2 + key_left2;
 			move = key_right + key_left;
 			crouchslideAnim = true;
@@ -49,11 +44,8 @@ function scr_player_mach2()
 			}
 			if (grounded && sprite_index != spr_null)
 			{
-				if (!machpunchAnim && sprite_index != spr_mach && sprite_index != spr_player_mach3 && sprite_index != spr_player_machhit)
-				{
-					if (sprite_index != spr_player_machhit && sprite_index != spr_player_rollgetup)
-						sprite_index = spr_mach;
-				}
+				if (!machpunchAnim && sprite_index != spr_mach && sprite_index != spr_player_rollgetup)
+					sprite_index = spr_mach;
 				if (machpunchAnim)
 				{
 					if (!punch && sprite_index != spr_machpunch1)

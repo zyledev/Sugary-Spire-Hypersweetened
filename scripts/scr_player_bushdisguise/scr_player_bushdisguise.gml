@@ -23,7 +23,7 @@ function scr_player_bushdisguise()
 	sprite_index = spr_player_bushidle;
 	if (key_down)
 	{
-		sprite_index = spr_bushdisguise;
+		sprite_index = spr_null;
 		bushdetection = true;
 	}
 	if (!key_down)

@@ -11,7 +11,7 @@ function scr_player_pistol()
 	stopAnim = true;
 	crouchslideAnim = true;
 	crouchAnim = true;
-	if (floor(image_index) == (image_number - 1) && sprite_index != spr_player_crouchshoot && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair && !key_down)
+	if (floor(image_index) == (image_number - 1) && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair && !key_down)
 		state = states.normal;
 	else if (floor(image_index) == (image_number - 1) && key_down && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair)
 		state = states.crouch;
@@ -43,23 +43,6 @@ function scr_player_pistol()
 		else
 			box = bbox_left;
 		var ID = instance_create(box + (xscale * 10), y, obj_pistolbullet);
-		ID.hspeed = xscale * 15;
-		shoot = false;
-	}
-	if (shoot && floor(image_index) == 0 && sprite_index == spr_player_crouchshoot)
-	{
-		with (obj_camera)
-		{
-			shake_mag = 8;
-			shake_mag_acc = 30 / room_speed;
-		}
-		with (instance_create(x + (xscale * 10), y + 16, obj_pistoleffect))
-			image_xscale = other.xscale;
-		if (xscale == 1)
-			box = bbox_right;
-		else
-			box = bbox_left;
-		ID = instance_create(box + (xscale * 10), y + 20, obj_pistolbullet);
 		ID.hspeed = xscale * 15;
 		shoot = false;
 	}

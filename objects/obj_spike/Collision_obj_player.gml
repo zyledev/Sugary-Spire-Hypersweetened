@@ -4,14 +4,6 @@ with (obj_player)
 	{
 		scr_sound(sound_metaldestroy);
 		obj_player.grav = 0.5;
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
-		instance_create(x, y, obj_slimedebris);
 		if (x != other.x)
 			obj_player.hsp = sign(x - other.x) * 5;
 		else

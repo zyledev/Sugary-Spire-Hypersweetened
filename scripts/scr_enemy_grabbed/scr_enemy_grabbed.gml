@@ -36,8 +36,6 @@ function scr_enemy_grabbed()
 	{
 		alarm[3] = 3;
 		global.hit += 1;
-		if (other.object_index == obj_pizzaball)
-			global.golfhit += 1;
 		hp -= 1;
 		instance_create(x + (obj_player.xscale * 30), y, obj_bumpeffect);
 		alarm[1] = 5;
@@ -62,8 +60,6 @@ function scr_enemy_grabbed()
 	{
 		alarm[3] = 3;
 		global.hit += 1;
-		if (other.object_index == obj_pizzaball)
-			global.golfhit += 1;
 		hp -= 1;
 		instance_create(x + (-obj_player.xscale * 50), y, obj_bumpeffect);
 		alarm[1] = 5;

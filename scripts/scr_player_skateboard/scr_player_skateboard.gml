@@ -40,6 +40,4 @@ function scr_player_skateboard()
 	}
 	sprite_index = spr_player_skateboard;
 	image_speed = 0.35;
-	if (!instance_exists(obj_slidecloud) && grounded && movespeed > 5)
-		instance_create(x, y, obj_slidecloud);
 }

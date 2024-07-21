@@ -26,6 +26,4 @@ function scr_player_shotgun()
 		}
 	}
 	image_speed = 0.4;
-	if (!instance_exists(obj_slidecloud) && grounded && movespeed > 4)
-		instance_create(x, y, obj_slidecloud);
 }

@@ -1,11 +1,6 @@
 function scr_player_machroll()
 {
-	if (!place_meeting(x, y + 1, obj_railh))
-		hsp = xscale * movespeed;
-	else if (place_meeting(x, y + 1, obj_railh))
-		hsp = (xscale * movespeed) - 5;
-	else if (place_meeting(x, y + 1, obj_railh2))
-		hsp = (xscale * movespeed) + 5;
+	hsp = xscale * movespeed;
 	mach2 = 100;
 	machslideAnim = true;
 	move = key_right + key_left;

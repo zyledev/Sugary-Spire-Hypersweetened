@@ -79,8 +79,6 @@ function scr_player_handstandjump()
 				scr_sound(sound_bump);
 			}
 			image_speed = 0.3;
-			if (!instance_exists(obj_slidecloud) && grounded && movespeed > 5)
-				instance_create(x, y, obj_slidecloud);
 			break;
 	}
 	if (key_attack && floor(image_index) == (image_number - 1) && sprite_index != spr_player_bump)

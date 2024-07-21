@@ -34,10 +34,6 @@ function scr_characterspr()
 		spr_machslideend = spr_player_machslideend;
 		spr_machslideboost = spr_player_machslideboost;
 		spr_land2 = spr_player_land2;
-		spr_punch = spr_player_punch;
-		spr_backkick = spr_player_backkick;
-		spr_shoulder = spr_player_shoulder;
-		spr_uppunch = spr_player_uppunch;
 		spr_stomp = spr_player_stomp;
 		spr_stompprep = spr_player_stompprep;
 		spr_crouchslide = spr_player_machslide;
@@ -49,7 +45,6 @@ function scr_characterspr()
 		spr_grab = spr_player_grab;
 		spr_mach2jump = spr_player_mach2jump;
 		spr_Timesup = spr_player_timeup;
-		spr_deathstart = spr_player_deathstart;
 		spr_deathend = spr_player_deathend;
 		spr_machpunch1 = spr_player_machpunch1;
 		spr_machpunch2 = spr_player_machpunch2;
@@ -57,8 +52,6 @@ function scr_characterspr()
 		spr_entergate = spr_player_entergate;
 		spr_gottreasure = spr_player_entergate;
 		spr_bossintro = spr_player_bossintro;
-		spr_hurtidle = spr_player_hurtidle;
-		spr_hurtwalk = spr_player_hurtwalk;
 		spr_suplexmash1 = spr_player_suplexmash1;
 		spr_suplexmash2 = spr_player_suplexmash2;
 		spr_suplexmash3 = spr_player_suplexmash3;
@@ -73,7 +66,6 @@ function scr_characterspr()
 		spr_suplexdash = spr_player_suplexdash;
 		spr_piledriver = spr_player_piledriver;
 		spr_piledriverland = spr_player_piledriverland;
-		spr_charge = spr_player_charge;
 		spr_palette = spr_pal;
 		spr_caneidle = spr_player_caneidle;
 		spr_caneslam = spr_player_caneslam;
@@ -127,10 +119,6 @@ function scr_characterspr()
 		spr_machslideend = spr_player_machslideend;
 		spr_machslideboost = spr_player_machslideboost;
 		spr_land2 = spr_player_land2;
-		spr_punch = spr_player_punch;
-		spr_backkick = spr_player_backkick;
-		spr_shoulder = spr_player_shoulder;
-		spr_uppunch = spr_player_uppunch;
 		spr_stomp = spr_player_stomp;
 		spr_stompprep = spr_player_stompprep;
 		spr_crouchslide = spr_player_machslide;
@@ -142,7 +130,6 @@ function scr_characterspr()
 		spr_grab = spr_player_grab;
 		spr_mach2jump = spr_player_mach2jump;
 		spr_Timesup = spr_player_timeup;
-		spr_deathstart = spr_player_deathstart;
 		spr_deathend = spr_player_deathend;
 		spr_machpunch1 = spr_player_machpunch1;
 		spr_machpunch2 = spr_player_machpunch2;
@@ -150,8 +137,6 @@ function scr_characterspr()
 		spr_entergate = spr_player_entergate;
 		spr_gottreasure = spr_player_entergate;
 		spr_bossintro = spr_player_bossintro;
-		spr_hurtidle = spr_player_hurtidle;
-		spr_hurtwalk = spr_player_hurtwalk;
 		spr_suplexmash1 = spr_player_suplexmash1;
 		spr_suplexmash2 = spr_player_suplexmash2;
 		spr_suplexmash3 = spr_player_suplexmash3;
@@ -166,7 +151,6 @@ function scr_characterspr()
 		spr_suplexdash = spr_player_suplexdash;
 		spr_piledriver = spr_player_piledriver;
 		spr_piledriverland = spr_player_piledriverland;
-		spr_charge = spr_player_charge;
 		spr_palette = spr_palp;
 		spr_caneidle = spr_player_caneidle;
 		spr_canewalk = spr_player_canewalk;
@@ -210,10 +194,6 @@ function scr_characterspr()
 		spr_machslideend = spr_player_machslideend;
 		spr_machslideboost = spr_player_machslideboost;
 		spr_land2 = spr_player_land2;
-		spr_punch = spr_player_punch;
-		spr_backkick = spr_player_backkick;
-		spr_shoulder = spr_player_shoulder;
-		spr_uppunch = spr_player_uppunch;
 		spr_stomp = spr_player_stomp;
 		spr_stompprep = spr_player_stompprep;
 		spr_crouchslide = spr_player_machslide;
@@ -225,7 +205,6 @@ function scr_characterspr()
 		spr_grab = spr_player_grab;
 		spr_mach2jump = spr_player_mach2jump;
 		spr_Timesup = spr_player_timeup;
-		spr_deathstart = spr_player_deathstart;
 		spr_deathend = spr_player_deathend;
 		spr_machpunch1 = spr_player_machpunch1;
 		spr_machpunch2 = spr_player_machpunch2;
@@ -233,8 +212,6 @@ function scr_characterspr()
 		spr_entergate = spr_player_entergate;
 		spr_gottreasure = spr_player_entergate;
 		spr_bossintro = spr_player_bossintro;
-		spr_hurtidle = spr_player_hurtidle;
-		spr_hurtwalk = spr_player_hurtwalk;
 		spr_suplexmash1 = spr_player_suplexmash1;
 		spr_suplexmash2 = spr_player_suplexmash2;
 		spr_suplexmash3 = spr_player_suplexmash3;
@@ -249,7 +226,6 @@ function scr_characterspr()
 		spr_suplexdash = spr_player_suplexdash;
 		spr_piledriver = spr_player_piledriver;
 		spr_piledriverland = spr_player_piledriverland;
-		spr_charge = spr_player_charge;
 		spr_palette = spr_palg;
 		spr_caneidle = spr_player_caneidle;
 		spr_caneslam = spr_player_caneslam;

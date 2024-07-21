@@ -12,7 +12,7 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 	{
 		with (obj_player)
 		{
-			if (instakillmove && other.baddieID.object_index != obj_pizzaball)
+			if (instakillmove)
 			{
 				instance_destroy(other.baddieID);
 				instance_destroy(other.id);
@@ -28,8 +28,6 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 			{
 				scr_sound(sound_enemyslap);
 				suplexmove = false;
-				if (other.baddieID.object_index == obj_pizzaball)
-					global.golfhit += 1;
 				if (vsp > 0)
 				{
 					other.baddieID.squashed = true;
@@ -95,8 +93,6 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 			}
 			if (instance_exists(other.baddieID) && state == states.mach1)
 			{
-				if (other.baddieID.object_index == obj_pizzaball)
-					global.golfhit += 1;
 				global.hit += 1;
 				global.combotime = 60;
 				instance_create(other.baddieID.x, other.baddieID.y, obj_slapstar);
@@ -118,21 +114,14 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 				other.baddieID.state = baddiestates.stun;
 				image_index = 0;
 				state = states.tackle;
-				if (other.baddieID.hp == 0 && other.baddieID.object_index != obj_boss)
+				if (other.baddieID.hp == 0)
 				{
 					instance_destroy(other.id);
 					instance_destroy(other.baddieID);
 				}
-				else if (other.baddieID.hp <= 0 && other.baddieID.object_index == obj_boss)
-				{
-					other.baddieID.thrown = 1;
-					vsp = -5;
-				}
 			}
 			if (instance_exists(other.baddieID) && (state == states.mach2 || state == states.rocketfistpizzano || state == states.pizzanoshoulderbash) && other.baddieID.grounded)
 			{
-				if (other.baddieID.object_index == obj_pizzaball)
-					global.golfhit += 1;
 				global.hit += 1;
 				global.combotime = 60;
 				instance_create(other.baddieID.x, other.baddieID.y, obj_slapstar);
@@ -153,15 +142,10 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 					sprite_index = spr_mach2jump;
 					vsp = -11;
 				}
-				if (other.baddieID.hp == 0 && other.baddieID.object_index != obj_boss)
+				if (other.baddieID.hp == 0)
 				{
 					instance_destroy(other.baddieID);
 					instance_destroy(other.id);
-				}
-				else if (other.baddieID.hp <= 0 && other.baddieID.object_index == obj_boss)
-				{
-					other.baddieID.thrown = true;
-					vsp = -5;
 				}
 			}
 			if (instance_exists(other.baddieID) && other.baddieID.state != baddiestates.charge && !attacking && state != states.tackle && state != states.hurt && !y < other.baddieID.y && !y > other.baddieID.y && !grabbing && other.baddieID.state != baddiestates.stun && state != states.handstandjump && state != states.hookshot)
@@ -172,8 +156,6 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 					xscale = -sign(x - other.baddieID.x);
 				}
 				hsp = -xscale * 8;
-				if (other.baddieID.object_index == obj_pizzaball)
-					global.golfhit += 1;
 				vsp = -4;
 				other.baddieID.image_xscale = -xscale;
 				other.baddieID.hsp = -other.baddieID.image_xscale * 4;

@@ -26,7 +26,6 @@ function scr_player_knightpep()
 	{
 		scr_sound(20);
 		instance_create(x, y, obj_swordhitbox);
-		instance_create(x + (-xscale * 10), y, obj_slidecloud);
 		sprite_index = spr_knightpep_attack;
 		image_index = 0;
 		state = states.knightpepattack;

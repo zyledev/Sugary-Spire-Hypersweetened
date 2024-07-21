@@ -22,12 +22,7 @@ function scr_player_boxxedpep()
 	if (sprite_index != spr_boxxedpep_intro)
 	{
 		move = key_left + key_right;
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = move * movespeed;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (move * movespeed) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (move * movespeed) + 5;
+		hsp = move * movespeed;
 	}
 	if (scr_solid(x + sign(hsp), y) && xscale == 1 && move == 1 && !place_meeting(x + 1, y, obj_slope))
 		movespeed = 0;
@@ -67,8 +62,6 @@ function scr_player_boxxedpep()
 			sprite_index = spr_boxxedpep_air;
 	}
 	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (floor(image_index) == 4 || floor(image_index) == 10))
-		instance_create(x, y + 43, obj_cloudeffect);
-	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (sprite_index == spr_player_downslopes || sprite_index == spr_player_upslopes))
 		instance_create(x, y + 43, obj_cloudeffect);
 	if (move != 0 && (floor(image_index) == 3 || floor(image_index) == 8) && !steppy)
 	{

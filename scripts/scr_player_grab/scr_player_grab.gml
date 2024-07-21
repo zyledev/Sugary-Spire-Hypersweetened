@@ -12,12 +12,7 @@ function scr_player_grab()
 		}
 		jumpstop = false;
 		anger = 100;
-		if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-			hsp = move * movespeed;
-		else if (place_meeting(x, y + 1, obj_railh))
-			hsp = (move * movespeed) - 5;
-		else if (place_meeting(x, y + 1, obj_railh2))
-			hsp = (move * movespeed) + 5;
+		hsp = move * movespeed;
 		if (move != 0)
 		{
 			if (movespeed < 6)

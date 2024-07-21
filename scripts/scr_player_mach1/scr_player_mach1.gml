@@ -23,12 +23,7 @@ function scr_player_mach1()
 				movespeed += 0.5;
 			machhitAnim = false;
 			crouchslideAnim = true;
-			if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-				hsp = xscale * movespeed;
-			else if (place_meeting(x, y + 1, obj_railh))
-				hsp = (xscale * movespeed) - 5;
-			else if (place_meeting(x, y + 1, obj_railh2))
-				hsp = (xscale * movespeed) + 5;
+			hsp = xscale * movespeed;
 			if (grounded && xscale == 1 && move == -1)
 			{
 				momemtum = false;

@@ -8,12 +8,7 @@ function scr_player_normal()
 	}
 	mach2 = 0;
 	move = key_left + key_right;
-	if (!place_meeting(x, y + 1, obj_railh) && !place_meeting(x, y + 1, obj_railh2))
-		hsp = move * movespeed;
-	else if (place_meeting(x, y + 1, obj_railh))
-		hsp = (move * movespeed) - 5;
-	else if (place_meeting(x, y + 1, obj_railh2))
-		hsp = (move * movespeed) + 5;
+	hsp = move * movespeed;
 	if (!machslideAnim && !landAnim && !shotgunAnim)
 	{
 		if (move == 0)
@@ -146,13 +141,11 @@ function scr_player_normal()
 		if (floor(image_index) == (image_number - 1) && sprite_index == spr_machslideend)
 			machslideAnim = false;
 	}
-	if (sprite_index == spr_player_shotgun && floor(image_index) == (image_number - 1))
-		sprite_index = spr_shotgun_idle;
 	if (!landAnim)
 	{
-		if (shotgunAnim && move == 0 && sprite_index != spr_player_shotgun)
+		if (shotgunAnim && move == 0)
 			sprite_index = spr_shotgun_idle;
-		else if (shotgunAnim && sprite_index != spr_player_shotgun)
+		else if (shotgunAnim)
 			sprite_index = spr_shotgun_walk;
 	}
 	if (scr_solid(x + sign(hsp), y) && xscale == 1 && move == 1 && !place_meeting(x + 1, y, obj_slope))
@@ -254,13 +247,6 @@ function scr_player_normal()
 		movespeed = 0;
 	if (movespeed > 7)
 		movespeed -= 0.1;
-	if (key_slap2 && shotgunAnim && !instance_exists(obj_cutscene_upstairs))
-	{
-		global.ammo -= 1;
-		sprite_index = spr_player_shotgun;
-		state = states.shotgun;
-		image_index = 0;
-	}
 	momemtum = false;
 	if (move != 0)
 	{
@@ -317,8 +303,6 @@ function scr_player_normal()
 		instance_create(x, y, obj_taunteffect);
 	}
 	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (floor(image_index) == 4 || floor(image_index) == 10))
-		instance_create(x, y + 43, obj_cloudeffect);
-	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (sprite_index == spr_player_downslopes || sprite_index == spr_player_upslopes))
 		instance_create(x, y + 43, obj_cloudeffect);
 	if (key_slap2 && key_up)
 	{

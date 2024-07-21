@@ -151,7 +151,7 @@ function scr_player_jump()
 		if (sprite_index == spr_stompprep && floor(image_index) == (image_number - 1))
 			sprite_index = spr_stomp;
 	}
-	if (key_attack && sprite_index != spr_airdash2 && sprite_index != spr_airdash1 && fallinganimation < 40 && sprite_index != spr_playerN_glide && character == "P")
+	if (key_attack && sprite_index != spr_airdash2 && sprite_index != spr_airdash1 && fallinganimation < 40 && character == "P")
 	{
 		stompAnim = false;
 		sprite_index = spr_airdash1;

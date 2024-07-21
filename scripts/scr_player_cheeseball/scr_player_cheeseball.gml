@@ -5,8 +5,6 @@ function scr_player_cheeseball()
 	{
 		scr_sound(sound_enemystomp);
 		obj_player.grav = 0.5;
-		repeat (8)
-			instance_create(x, y, obj_slimedebris);
 		if (x != other.x)
 			obj_player.hsp = sign(x - other.x) * 5;
 		else
@@ -18,7 +16,7 @@ function scr_player_cheeseball()
 		obj_player.flash = true;
 		state = states.bump;
 	}
-	sprite_index = spr_player_gumball;
+	sprite_index = spr_null;
 	if (key_jump)
 		input_buffer_jump = 0;
 	if (input_buffer_jump < 8 && grounded)
