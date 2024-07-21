@@ -1,2 +1,0 @@
-if (!grabbing)
-	movingupwards = true;

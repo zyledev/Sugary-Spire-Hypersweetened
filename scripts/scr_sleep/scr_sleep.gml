@@ -1,4 +1,0 @@
-function scr_sleep()
-{
-	
-}
