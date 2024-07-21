@@ -7,7 +7,7 @@ function scr_player_normal()
 		facehurt = 0;
 	}
 	mach2 = 0;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
 	if (!machslideAnim && !landAnim && !shotgunAnim)
 	{
@@ -153,7 +153,7 @@ function scr_player_normal()
 	if (scr_solid(x + sign(hsp), y) && xscale == -1 && move == -1 && !place_meeting(x - 1, y, obj_slope))
 		movespeed = 0;
 	jumpstop = false;
-	if (!grounded && !key_jump)
+	if (!grounded && !input.key_jump.pressed)
 	{
 		if (!shotgunAnim)
 			sprite_index = spr_fall;
@@ -165,7 +165,7 @@ function scr_player_normal()
 	}
 	if (character == "P")
 	{
-		if (key_attack && grounded && !(scr_solid(x + 1, y) && xscale == 1 && !place_meeting(x + xscale, y, obj_slope)) && !(scr_solid(x - 1, y) && xscale == -1 && !place_meeting(x + xscale, y, obj_slope)))
+		if (input.key_mach.check && grounded && !(scr_solid(x + 1, y) && xscale == 1 && !place_meeting(x + xscale, y, obj_slope)) && !(scr_solid(x - 1, y) && xscale == -1 && !place_meeting(x + xscale, y, obj_slope)))
 		{
 			mach2 = 0;
 			if (movespeed < 6)
@@ -176,7 +176,7 @@ function scr_player_normal()
 			image_index = 0;
 		}
 	}
-	if (character == "N" && key_attack)
+	if (character == "N" && input.key_mach.check)
 	{
 		if (!charged)
 		{
@@ -199,9 +199,9 @@ function scr_player_normal()
 			state = states.rocketfistpizzano;
 		}
 	}
-	if (character == "C" && key_attack)
+	if (character == "C" && input.key_mach.check)
 		state = states.coneboyinhale3;
-	if (key_jump && grounded && !key_down)
+	if (input.key_jump.pressed && grounded && !input.key_down.check)
 	{
 		scr_sound(sound_jump);
 		sprite_index = spr_jump;
@@ -213,7 +213,7 @@ function scr_player_normal()
 		image_index = 0;
 		jumpAnim = true;
 	}
-	if (grounded && input_buffer_jump < 8 && !key_down && !key_attack && vsp > 0)
+	if (grounded && input_buffer_jump < 8 && !input.key_down.check && !input.key_mach.check && vsp > 0)
 	{
 		scr_sound(sound_jump);
 		sprite_index = spr_jump;
@@ -228,7 +228,7 @@ function scr_player_normal()
 		image_index = 0;
 		freefallstart = false;
 	}
-	if ((key_down && grounded) || scr_solid(x, y - 3))
+	if ((input.key_down.check && grounded) || scr_solid(x, y - 3))
 	{
 		state = states.crouch;
 		landAnim = false;
@@ -260,7 +260,7 @@ function scr_player_normal()
 	}
 	else
 		image_speed = 0.35;
-	if (character == "P" && (key_slap2 && !key_down && !suplexmove && !shotgunAnim && global.cane != true) && obj_player.character != "G" && !key_attack)
+	if (character == "P" && (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim && global.cane != true) && obj_player.character != "G" && !input.key_mach.check)
 	{
 		scr_sound(sound_suplex1);
 		instance_create(x, y, obj_slaphitbox);
@@ -271,7 +271,7 @@ function scr_player_normal()
 		sprite_index = spr_suplexdash;
 		state = states.handstandjump;
 	}
-	if (character == "N" && (key_slap2 && !key_down && !suplexmove && !shotgunAnim && global.cane != true) && obj_player.character != "G" && obj_player.sprite_index != spr_mach1 && sprite_index != spr_airdash1 && sprite_index != spr_airdash2 && !key_attack)
+	if (character == "N" && (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim && global.cane != true) && obj_player.character != "G" && obj_player.sprite_index != spr_mach1 && sprite_index != spr_airdash1 && sprite_index != spr_airdash2 && !input.key_mach.check)
 	{
 		scr_sound(sound_suplex1);
 		instance_create(x, y, obj_slaphitbox);
@@ -283,7 +283,7 @@ function scr_player_normal()
 		state = states.pizzanoshoulderbash;
 		movespeed = 10;
 	}
-	if (key_taunt2)
+	if (input.key_taunt.pressed)
 	{
 		taunttimer = 20;
 		tauntstoredmovespeed = movespeed;
@@ -304,7 +304,7 @@ function scr_player_normal()
 	}
 	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (floor(image_index) == 4 || floor(image_index) == 10))
 		instance_create(x, y + 43, obj_cloudeffect);
-	if (key_slap2 && key_up)
+	if (input.key_attack.pressed && input.key_up.check)
 	{
 		grounded = false;
 		vsp = -15;
@@ -322,14 +322,14 @@ function scr_player_normal()
 			movespeed = 0;
 		if (scr_solid(x + sign(hsp), y) && (xscale == -1 && (move == -1 && !place_meeting(x - 1, y, obj_slope))))
 			movespeed = 0;
-		if (key_jump2 && grounded && !canrebound)
+		if (input.key_jump.check && grounded && !canrebound)
 		{
 			sprite_index = spr_player_canefall;
 			vsp = -15;
 			canrebound = true;
 			state = states.jump;
 		}
-		if (key_slap2 && !key_down && !suplexmove && !shotgunAnim)
+		if (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim)
 		{
 			scr_sound(sound_suplex1);
 			instance_create(x, y, obj_slaphitbox);
@@ -343,14 +343,7 @@ function scr_player_normal()
 				vsp = -5;
 		}
 	}
-	if (key_shoot2 && key_up && breakdanceammo > 0)
-	{
-		state = states.breakdance;
-		sprite_index = spr_player_breakdancebeach;
-		image_index = 0;
-		breakdanceammo -= 1;
-	}
-	if (key_slap2 && character == "G")
+	if (input.key_attack.pressed && character == "G")
 	{
 		state = states.gumbobmixnbrew;
 		image_index = 0;

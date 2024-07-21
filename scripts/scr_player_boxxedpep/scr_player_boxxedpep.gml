@@ -5,9 +5,9 @@ function scr_player_boxxedpep()
 	alarm[5] = 2;
 	alarm[7] = 60;
 	hurted = true;
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -21,7 +21,7 @@ function scr_player_boxxedpep()
 	}
 	if (sprite_index != spr_boxxedpep_intro)
 	{
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 		hsp = move * movespeed;
 	}
 	if (scr_solid(x + sign(hsp), y) && xscale == 1 && move == 1 && !place_meeting(x + 1, y, obj_slope))

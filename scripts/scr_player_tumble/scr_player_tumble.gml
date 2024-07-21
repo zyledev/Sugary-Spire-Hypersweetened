@@ -19,9 +19,9 @@ function scr_player_tumble()
 		state = states.bump;
 		image_index = 0;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;

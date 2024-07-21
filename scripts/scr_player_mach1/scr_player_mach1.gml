@@ -5,7 +5,7 @@ function scr_player_mach1()
 		case "N":
 		case "P":
 			dir = xscale;
-			move = key_left + key_right;
+			move = -input.key_left.check + input.key_right.check;
 			landAnim = false;
 			if (scr_solid(x + 1, y) && xscale == 1 && !place_meeting(x + 1, y, obj_slope))
 			{
@@ -61,20 +61,20 @@ function scr_player_mach1()
 				jumpAnim = false;
 				image_index = 0;
 			}
-			if (!key_attack && grounded)
+			if (!input.key_mach.check && grounded)
 			{
 				state = states.normal;
 				image_index = 0;
 				mach2 = 0;
 			}
-			if (key_down)
+			if (input.key_down.check)
 			{
 				sprite_index = spr_crouchslip;
 				state = states.crouchslide;
 				mach2 = 0;
 			}
 			image_speed = 0.45;
-			if (key_jump && grounded && key_attack)
+			if (input.key_jump.pressed && grounded && input.key_mach.check)
 			{
 				scr_sound(sound_jump);
 				sprite_index = spr_airdash1;
@@ -88,7 +88,7 @@ function scr_player_mach1()
 			}
 			if (!instance_exists(obj_dashcloud) && grounded)
 				instance_create(x, y, obj_dashcloud);
-			if (key_taunt2)
+			if (input.key_taunt.pressed)
 			{
 				taunttimer = 20;
 				tauntstoredmovespeed = movespeed;
@@ -107,7 +107,7 @@ function scr_player_mach1()
 				}
 				instance_create(x, y, obj_taunteffect);
 			}
-			if (key_slap2 && !key_down && !suplexmove && !shotgunAnim && global.cane != true)
+			if (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim && global.cane != true)
 			{
 				scr_sound(sound_suplex1);
 				instance_create(x, y, obj_slaphitbox);

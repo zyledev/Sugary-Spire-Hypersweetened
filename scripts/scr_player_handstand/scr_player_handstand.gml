@@ -1,13 +1,12 @@
 function scr_player_handstand()
 {
 	image_speed = 0.35;
-	scr_getinput();
 	if (dir != xscale)
 	{
 		dir = xscale;
 		movespeed = 0;
 	}
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (move != 0)
 		xscale = move;
 	hsp = (move * movespeed) + bouncespeed;
@@ -31,20 +30,20 @@ function scr_player_handstand()
 	if (sprite_index == spr_null && floor(image_index) == (image_number - 5))
 	{
 		movespeed = 10 + bouncespeed;
-		if (key_jump2 && !key_down)
+		if (input.key_jump.check && !input.key_down.check)
 			vsp = -11;
-		if (key_down && !key_jump2)
+		if (input.key_down.check && !input.key_jump.check)
 			vsp = -4;
-		if (!key_jump2 && !key_down)
+		if (!input.key_jump.check && !input.key_down.check)
 			vsp = -7;
 		if (!bounced)
 			bounced = true;
 	}
 	if (sprite_index == spr_null && floor(image_index) == (image_number - 1))
 		sprite_index = spr_null;
-	if (!key_attack)
+	if (!input.key_mach.check)
 		state = states.normal;
-	if (key_slap2 && bounced != false && !key_up)
+	if (input.key_attack.pressed && bounced != false && !input.key_up.check)
 	{
 		sprite_index = spr_null;
 		image_index = 0;
@@ -55,7 +54,7 @@ function scr_player_handstand()
 		bounced = false;
 		state = states.mach3;
 	}
-	else if (key_slap2 && bounced != 0 && key_up)
+	else if (input.key_attack.pressed && bounced != 0 && input.key_up.check)
 	{
 		sprite_index = spr_null;
 		image_index = 0;

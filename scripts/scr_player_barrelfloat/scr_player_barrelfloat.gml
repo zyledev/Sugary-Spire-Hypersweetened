@@ -1,10 +1,10 @@
 function scr_player_barrelfloat()
 {
 	mask_index = spr_player_mask;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
 	vsp = 0;
-	if (key_jump)
+	if (input.key_jump.pressed)
 	{
 		jumpstop = true;
 		jumpAnim = true;

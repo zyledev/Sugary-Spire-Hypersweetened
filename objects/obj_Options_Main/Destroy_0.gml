@@ -8,5 +8,5 @@ if (room == realtitlescreen && instance_exists(obj_mainfartselect))
 if (instance_exists(obj_pause))
 {
 	obj_pause.alarm[0] = 3;
-	obj_pause.key_jump = false;
+	obj_pause.input.key_jump.pressed = false;
 }

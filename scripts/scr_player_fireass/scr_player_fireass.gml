@@ -6,7 +6,7 @@ function scr_player_fireass()
 		xscale *= -1;
 	if (sprite_index == spr_player_fireass)
 	{
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 		if (move != 0)
 			xscale = move;
 		hsp = move * movespeed;

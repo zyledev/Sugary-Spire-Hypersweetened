@@ -9,7 +9,7 @@ function scr_player_uppercut()
 	}
 	if (scr_solid(x + sign(hsp), y) && !scr_slope_ext(x + xscale, y) && move != 0)
 		movespeed = 0;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (move == 0)
 		hsp = xscale * movespeed;
 	else

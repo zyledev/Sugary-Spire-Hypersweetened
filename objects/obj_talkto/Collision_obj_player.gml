@@ -1,6 +1,6 @@
 if (obj_player.state != states.talkto && !instance_exists(obj_uparrow))
 	instance_create(x, y - 32, obj_uparrow);
-if (obj_player.key_up2)
+if (obj_player.input.key_up.pressed)
 {
 	obj_player.state = states.talkto;
 	drawing = true;

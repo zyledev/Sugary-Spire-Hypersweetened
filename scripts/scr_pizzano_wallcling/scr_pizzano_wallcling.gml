@@ -8,7 +8,7 @@ function scr_pizzano_wallcling()
 	image_speed = 0.35;
 	if (sprite_index == spr_pizzano_wallcling && floor(image_index) == (image_number - 1))
 		sprite_index = spr_pizzano_wallslide;
-	if (key_jump && !grounded)
+	if (input.key_jump.pressed && !grounded)
 	{
 		movespeed = 8;
 		vsp = -12;

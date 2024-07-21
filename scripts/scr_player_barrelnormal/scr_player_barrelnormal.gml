@@ -1,22 +1,22 @@
 function scr_player_barrelnormal()
 {
 	mask_index = spr_player_mask;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
 	if (vsp < 12)
 		vsp += grav;
-	if (!grounded && !key_jump)
+	if (!grounded && !input.key_jump.pressed)
 	{
 		state = states.barrelfall;
 		image_index = 0;
 		hsp = 0;
 	}
-	if ((key_down && grounded) || scr_solid(x, y - 3))
+	if ((input.key_down.check && grounded) || scr_solid(x, y - 3))
 	{
 		state = states.barrelcrouch;
 		image_index = 0;
 	}
-	if (key_attack && grounded)
+	if (input.key_mach.check && grounded)
 	{
 		movespeed = 0;
 		state = states.barrelmach1;

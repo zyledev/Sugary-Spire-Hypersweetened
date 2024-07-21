@@ -1,30 +1,30 @@
-scr_getinput();
+input_check(input);
 if (abletomove)
 {
-	if (-key_left2 && selected < 2)
+	if (input.key_left.pressed && selected < 2)
 	{
 		scr_sound(sound_step);
 		selected++;
 	}
-	if (key_right2 && selected > 0)
+	if (input.key_right.pressed && selected > 0)
 	{
 		scr_sound(sound_step);
 		selected--;
 	}
-	if (key_jump && selected == 0 && obj_file1.sprite_index != spr_file1confirm)
+	if (input.key_confirm.pressed && selected == 0 && obj_file1.sprite_index != spr_file1confirm)
 	{
 		scr_sound(sound_toppingot);
 		abletomove = false;
 		obj_file1.image_index = 0;
 		obj_file1.sprite_index = spr_file1confirm;
 	}
-	if (key_jump && selected == 1 && !instance_exists(obj_Options_Main))
+	if (input.key_confirm.pressed && selected == 1 && !instance_exists(obj_Options_Main))
 	{
 		scr_sound(sound_toppingot);
 		abletomove = false;
 		instance_create(0, 0, obj_Options_Main);
 	}
-	if (key_jump && selected == 2 && !instance_exists(obj_erasefile))
+	if (input.key_confirm.pressed && selected == 2 && !instance_exists(obj_erasefile))
 	{
 		scr_sound(sound_toppingot);
 		abletomove = false;

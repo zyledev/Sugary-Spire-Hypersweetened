@@ -1,2 +1,2 @@
-key_jump = false;
+input.key_confirm.check = false;
 canmove = true;

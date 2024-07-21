@@ -7,7 +7,7 @@ function scr_gumbob_propeller()
 		dir = xscale;
 		movespeed = 0;
 	}
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (move != 0)
 		xscale = move;
 	hsp = move * movespeed;
@@ -29,7 +29,7 @@ function scr_gumbob_propeller()
 		sprite_index = spr_fall;
 		gumbobpropellercooldown = 100;
 	}
-	if (!key_jump2)
+	if (!input.key_jump.check)
 	{
 		state = states.normal;
 		gumbobpropellercooldown = 100;

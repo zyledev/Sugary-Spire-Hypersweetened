@@ -2,6 +2,8 @@
 #macro obj_blank obj_gmliveblank
 #macro rm_blank room_gmliveblank
 global.__rousr_dissonance = undefined;
+// set the controller deadzone
+gamepad_set_axis_deadzone(0, 0.4)
 
 global.PAUSEfadeoff = 0;
 global.minesProgress = false;
@@ -27,6 +29,7 @@ global.crackfollow = false;
 global.chocofollow = false;
 global.wormfollow = false;
 global.candyfollow = false;
+// options
 ini_open("optionData.ini");
 global.fullscreen = ini_read_real("Settings", "fullscrn", 0);
 global.selectedResolution = ini_read_real("Settings", "resolution", 1);
@@ -38,6 +41,7 @@ global.musicVolume = ini_read_real("Settings", "musicvol", 1);
 global.soundVolume = ini_read_real("Settings", "soundvol", 1);
 global.masterVolume = ini_read_real("Settings", "mastervol", 1);
 ini_close();
+
 audio_master_gain(global.masterVolume);
 global.targetCamX = 0;
 global.targetCamY = 0;

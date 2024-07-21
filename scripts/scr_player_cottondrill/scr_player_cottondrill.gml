@@ -6,7 +6,7 @@ function scr_player_cottondrill()
 		dir = xscale;
 		movespeed = 0;
 	}
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (move != 0)
 		xscale = move;
 	hsp = 0;
@@ -19,7 +19,7 @@ function scr_player_cottondrill()
 		movespeed = 0;
 		image_index = 0;
 	}
-	if (key_slap2 && sprite_index != spr_cotton_attack && groundedcot)
+	if (input.key_attack.pressed && sprite_index != spr_cotton_attack && groundedcot)
 	{
 		state = states.cotton;
 		flash = true;
@@ -31,7 +31,7 @@ function scr_player_cottondrill()
 		scr_sound(sound_suplex1);
 		groundedcot = false;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 	{
 		state = states.cotton;
 		vsp = -10;

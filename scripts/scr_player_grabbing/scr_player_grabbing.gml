@@ -2,9 +2,9 @@ function scr_player_grabbing()
 {
 	if (!place_meeting(x, y, obj_baddie))
 		state = states.normal;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -17,19 +17,19 @@ function scr_player_grabbing()
 		movespeed = 0;
 	if (xscale == -1 && move == 1)
 		movespeed = 0;
-	if (key_attack && grounded)
+	if (input.key_mach.check && grounded)
 	{
 		movespeed = 0;
 		image_index = 0;
 		state = states.grab;
 	}
-	if (key_attack && !grounded)
+	if (input.key_mach.check && !grounded)
 	{
 		movespeed = 0;
 		image_index = 0;
 		state = states.throwing;
 	}
-	if (key_jump && !grounded)
+	if (input.key_jump.pressed && !grounded)
 	{
 		movespeed = 0;
 		vsp = -11;
@@ -48,7 +48,7 @@ function scr_player_grabbing()
 			sprite_index = spr_player_grabbingmove;
 		xscale = move;
 	}
-	if (key_jump && grounded && !key_down && !key_attack)
+	if (input.key_jump.pressed && grounded && !key_down && !input.key_mach.check)
 	{
 		vsp = -9;
 		image_index = 0;

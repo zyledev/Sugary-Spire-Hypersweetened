@@ -1,5 +1,15 @@
 scr_initinput();
-scr_getinput();
+input =
+{
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_left : new Input(global.keybinds.key_left),
+	key_right : new Input(global.keybinds.key_right),
+	key_jump : new Input(global.keybinds.key_jump),
+	key_mach : new Input(global.keybinds.key_attack),
+	key_attack : new Input(global.keybinds.key_slap),
+	key_taunt : new Input(global.keybinds.key_taunt)
+};
 Sjumpcan_doublejump = true;
 firetrailbuffer = 0;
 playComboVariable = -4;

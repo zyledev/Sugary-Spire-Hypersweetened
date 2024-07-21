@@ -1,6 +1,6 @@
 if (y <= -1700)
 	can_goUp = false;
-if (obj_player.key_jump2 && !instance_exists(obj_fadeout))
+if (obj_player.input.key_jump.check && !instance_exists(obj_fadeout))
 {
 	scr_playerreset();
 	obj_player.targetDoor = "A";

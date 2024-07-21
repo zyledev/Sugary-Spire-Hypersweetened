@@ -1,6 +1,6 @@
 function scr_player_crouchjump()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	fallinganimation++;
 	if (fallinganimation >= 40 && fallinganimation < 80)
 	{
@@ -10,7 +10,7 @@ function scr_player_crouchjump()
 	mask_index = spr_crouchmask;
 	hsp = move * movespeed;
 	movespeed = 4;
-	if (!key_jump2 && !jumpstop && jumpAnim)
+	if (!input.key_jump.check && !jumpstop && jumpAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -20,7 +20,7 @@ function scr_player_crouchjump()
 		vsp = grav;
 		jumpstop = true;
 	}
-	if (grounded && key_down)
+	if (grounded && input.key_down.check)
 	{
 		state = states.crouch;
 		jumpAnim = true;
@@ -28,7 +28,7 @@ function scr_player_crouchjump()
 		image_index = 0;
 		jumpstop = false;
 	}
-	if (grounded && !key_down && !scr_solid(x, y - 16))
+	if (grounded && !input.key_down.check && !scr_solid(x, y - 16))
 	{
 		movespeed = 0;
 		state = states.normal;

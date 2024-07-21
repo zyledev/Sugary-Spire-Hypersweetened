@@ -1,7 +1,7 @@
 function scr_player_pistol()
 {
 	mach2 = 0;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (sprite_index != spr_player_pistolair && sprite_index != spr_player_shootslide)
 		hsp = 0;
 	jumpAnim = true;
@@ -11,9 +11,9 @@ function scr_player_pistol()
 	stopAnim = true;
 	crouchslideAnim = true;
 	crouchAnim = true;
-	if (floor(image_index) == (image_number - 1) && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair && !key_down)
+	if (floor(image_index) == (image_number - 1) && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair && !input.key_down.check)
 		state = states.normal;
-	else if (floor(image_index) == (image_number - 1) && key_down && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair)
+	else if (floor(image_index) == (image_number - 1) && input.key_down.check && sprite_index != spr_player_shootup && sprite_index != spr_player_shootdiagonal && sprite_index != spr_player_pistolair)
 		state = states.crouch;
 	else if (floor(image_index) == (image_number - 1) && sprite_index != spr_player_pistolair)
 	{
@@ -84,11 +84,6 @@ function scr_player_pistol()
 		ID.vspeed = -15;
 		ID.hspeed = xscale * 15;
 		shoot = false;
-	}
-	if (key_shoot && !grounded && floor(image_index) == (image_number - 1))
-	{
-		image_index = 0;
-		shoot = true;
 	}
 	if (!grounded && sprite_index != spr_player_pistolair)
 		sprite_index = spr_player_pistolair;

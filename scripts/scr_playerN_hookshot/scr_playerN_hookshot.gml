@@ -1,10 +1,10 @@
 function scr_playerN_hookshot()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = movespeed * move;
 	if (move != 0)
 		xscale = move;
-	if (key_jump)
+	if (input.key_jump.pressed)
 	{
 		vsp = -6;
 		instance_create(x, y, obj_washingmachine);

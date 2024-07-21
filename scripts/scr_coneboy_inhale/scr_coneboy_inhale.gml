@@ -5,7 +5,7 @@ function scr_coneboy_inhale()
 	if (!inhaling)
 		inhaling = true;
 	sprite_index = spr_coneboy_inhale;
-	if (!key_attack)
+	if (!input.key_mach.check)
 	{
 		state = states.normal;
 		inhaling = false;

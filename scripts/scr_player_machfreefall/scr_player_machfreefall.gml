@@ -11,8 +11,8 @@ function scr_player_machfreefall()
 		movespeed = 10;
 	}
 	machslideAnim = true;
-	move2 = key_right2 + key_left2;
-	move = key_right + key_left;
+	move2 = input.key_right.pressed + -input.key_left.check;
+	move = input.key_right.check + -input.key_left.check;
 	crouchslideAnim = true;
 	sprite_index = spr_player_machfreefall;
 	if (scr_solid(x + 1, y) && image_xscale == 1)
@@ -86,7 +86,7 @@ function scr_player_machfreefall()
 			instance_create(x, y, obj_landcloud);
 		freefallstart = false;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	image_speed = 0.5;
 }

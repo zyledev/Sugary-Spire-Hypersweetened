@@ -1,6 +1,6 @@
 function scr_player_shotgunjump()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
 	if ((scr_solid(x + 1, y) && xscale == 1) || (scr_solid(x - 1, y) && xscale == -1))
 		movespeed = 0;
@@ -26,7 +26,7 @@ function scr_player_shotgunjump()
 		mach2 = 50;
 		state = states.mach2;
 	}
-	if (grounded && input_buffer_jump < 5 && !key_down && vsp > 0)
+	if (grounded && input_buffer_jump < 5 && !input.key_down.check && vsp > 0)
 	{
 		stompAnim = false;
 		vsp = -9;
@@ -76,7 +76,7 @@ function scr_player_shotgunjump()
 		ID5.sprite_index = spr_shotgunbulletdown;
 		shoot = false;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	if (sprite_index == spr_player_shotgunjump1 && floor(image_index) == 3)
 		sprite_index = spr_player_shotgunjump2;

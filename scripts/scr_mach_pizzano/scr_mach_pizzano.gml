@@ -1,6 +1,6 @@
 function scr_mach_pizzano()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = xscale * movespeed;
 	if (movespeed < 12)
 		movespeed += 0.07;

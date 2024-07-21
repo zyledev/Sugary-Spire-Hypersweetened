@@ -9,7 +9,7 @@ function scr_player_barrelmach2()
 		state = states.barrelfall;
 		image_index = 0;
 	}
-	if (!key_attack && grounded)
+	if (!input.key_mach.check && grounded)
 	{
 		state = states.barrelnormal;
 		image_index = 0;

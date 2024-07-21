@@ -2,7 +2,7 @@ if (global.panic)
 {
 	with (obj_player)
 	{
-		if (grounded && key_up && (state == states.normal || state == states.mach1 || state == states.mach2 || state == states.mach3))
+		if (grounded && input.key_up.check && (state == states.normal || state == states.mach1 || state == states.mach2 || state == states.mach3))
 		{
 			targetDoor = "none";
 			if (global.collect >= global.srank)

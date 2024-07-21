@@ -4,7 +4,7 @@ function scr_gumbob_mixnbrew()
 		sprite_index = spr_gumbob_brew_shake;
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_gumbob_brew_shake)
 		state = states.normal;
-	if (sprite_index == spr_gumbob_brew_shake && key_up)
+	if (sprite_index == spr_gumbob_brew_shake && input.key_up.check)
 	{
 		sprite_index = spr_gumbob_brew_up;
 		image_index = 0;

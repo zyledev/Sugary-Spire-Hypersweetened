@@ -18,22 +18,22 @@ function scr_rocketfist_pizzano()
 	}
 	if (sprite_index != spr_pizzano_sjumpprepside)
 	{
-		if (!key_up && !key_down)
+		if (!input.key_up.check && !input.key_down.check)
 			vsp = 0;
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 		hsp = xscale * movespeed;
 		if ((move != 0 && move != xscale) && movespeed > 1)
 			movespeed -= 0.05;
 		if ((move != 0 && move == xscale) && movespeed < 24)
 			movespeed += 0.1;
-		if (key_jump && grounded)
+		if (input.key_jump.pressed && grounded)
 		{
 			state = states.pizzanotwirl;
 			vsp = -12;
 		}
-		if (key_up)
+		if (input.key_up.check)
 			vsp = -5;
-		if (key_down)
+		if (input.key_down.check)
 			vsp = 5;
 		if (scr_solid(x + xscale, y, true) && !place_meeting(x + xscale, y, obj_destructibles))
 		{
@@ -44,7 +44,7 @@ function scr_rocketfist_pizzano()
 		}
 		if (!grounded && hsp != 0 && sprite_index != spr_pizzano_sjumpside)
 			sprite_index = spr_pizzano_sjumpside;
-		if (key_slap2 && key_up && charged)
+		if (input.key_attack.pressed && input.key_up.check && charged)
 		{
 			flash = true;
 			alarm[0] = 240;
@@ -52,9 +52,9 @@ function scr_rocketfist_pizzano()
 			state = states.Sjump;
 			sprite_index = spr_pizzano_sjumpprep;
 		}
-		if (key_down && grounded)
+		if (input.key_down.check && grounded)
 			sprite_index = spr_pizzano_crouchslide;
-		else if (!key_down && grounded && hsp != 0)
+		else if (!input.key_down.check && grounded && hsp != 0)
 			sprite_index = spr_pizzano_mach3;
 	}
 	image_speed = 0.35;

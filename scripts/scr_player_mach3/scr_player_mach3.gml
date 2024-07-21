@@ -11,8 +11,8 @@ function scr_player_mach3()
 			hsp = xscale * movespeed;
 			mach2 = 100;
 			momemtum = true;
-			move = key_right + key_left;
-			move2 = key_right2 + key_left2;
+			move = input.key_right.check + -input.key_left.check;
+			move2 = input.key_right.pressed + -input.key_left.pressed;
 			if (movespeed < 24 && move == xscale)
 			{
 				movespeed += 0.05;
@@ -22,14 +22,14 @@ function scr_player_mach3()
 			else if ((movespeed > 12 && move != xscale) && Dashpad_buffer <= 0)
 				movespeed -= 0.05;
 			crouchslideAnim = true;
-			if (!key_jump2 && !jumpstop && vsp < 0.5)
+			if (!input.key_jump.check && !jumpstop && vsp < 0.5)
 			{
 				vsp /= 2;
 				jumpstop = true	;
 			}
 			if (grounded && vsp > 0)
 				jumpstop = false;
-			if (input_buffer_jump < 8 && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) && key_attack)
+			if (input_buffer_jump < 8 && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) && input.key_mach.check)
 			{
 				scr_sound(sound_jump);
 				image_index = 0;
@@ -47,11 +47,11 @@ function scr_player_mach3()
 			}
 			if (sprite_index == spr_player_crazyrun && !instance_exists(obj_crazyrunothereffect))
 				instance_create(x, y, obj_crazyrunothereffect);
-			if (key_down)
+			if (input.key_down.check)
 				input_buffer_jump = 10000000000;
-			else if (key_jump)
+			else if (input.key_jump.pressed)
 				input_buffer_jump = 0;
-			if (key_up && sprite_index != spr_player_dashpad && sprite_index != spr_player_dive)
+			if (input.key_up.check && sprite_index != spr_player_dashpad && sprite_index != spr_player_dive)
 			{
 				scr_sound(sound_superjumpcharge1);
 				sprite_index = spr_player_superjumpprep;
@@ -59,7 +59,7 @@ function scr_player_mach3()
 				hsp = 0;
 				image_index = 0;
 			}
-			if ((!key_attack && grounded && sprite_index != spr_player_dashpad) && Dashpad_buffer <= 0)
+			if ((!input.key_mach.check && grounded && sprite_index != spr_player_dashpad) && Dashpad_buffer <= 0)
 			{
 				scr_sound(sound_break);
 				sprite_index = spr_player_machslidestart;
@@ -76,20 +76,20 @@ function scr_player_mach3()
 				image_index = 0;
 				mach2 = 100;
 			}
-			if (key_down && !place_meeting(x, y, obj_dashpad) && !grounded && sprite_index != spr_player_dive)
+			if (input.key_down.check && !place_meeting(x, y, obj_dashpad) && !grounded && sprite_index != spr_player_dive)
 			{
 				flash = false;
 				state = states.machroll;
 				vsp = 15;
 			}
-			if (key_down && !place_meeting(x, y, obj_dashpad) && grounded)
+			if (input.key_down.check && !place_meeting(x, y, obj_dashpad) && grounded)
 			{
 				flash = false;
 				state = states.machroll;
 			}
 			if (sprite_index == spr_player_dive && grounded)
 				sprite_index = spr_player_mach4;
-			if (!key_down && sprite_index == spr_player_dive && !grounded)
+			if (!input.key_down.check && sprite_index == spr_player_dive && !grounded)
 			{
 				vsp = 15;
 				sprite_index = spr_player_mach4;
@@ -156,7 +156,7 @@ function scr_player_mach3()
 				image_speed = 0.35;
 			if (sprite_index == spr_player_dashpad)
 				image_speed = 0.3;
-			if (key_taunt2)
+			if (input.key_taunt.pressed)
 			{
 				taunttimer = 20;
 				tauntstoredmovespeed = movespeed;
@@ -175,7 +175,7 @@ function scr_player_mach3()
 				}
 				instance_create(x, y, obj_taunteffect);
 			}
-			if (key_slap2 && !key_down && !suplexmove && !shotgunAnim && global.cane != true)
+			if (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim && global.cane != true)
 			{
 				scr_sound(sound_suplex1);
 				instance_create(x, y, obj_slaphitbox);

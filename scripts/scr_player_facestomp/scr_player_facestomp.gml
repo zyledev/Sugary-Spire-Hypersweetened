@@ -1,6 +1,6 @@
 function scr_player_facestomp()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	jumpAnim = false;
 	hsp = move * movespeed;
 	if ((scr_solid(x + 1, y) && xscale == 1) || (scr_solid(x - 1, y) && xscale == -1))
@@ -13,7 +13,7 @@ function scr_player_facestomp()
 		movespeed = 0;
 	if (xscale == -1 && move == 1)
 		movespeed = 0;
-	if (!key_down)
+	if (!input.key_down.check)
 		state = states.jump;
 	landAnim = true;
 	if (vsp > 0)
@@ -63,6 +63,6 @@ function scr_player_facestomp()
 			instance_create(x, y, obj_landcloud);
 		freefallstart = false;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 }

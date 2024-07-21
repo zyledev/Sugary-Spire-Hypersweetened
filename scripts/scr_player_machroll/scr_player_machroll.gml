@@ -3,10 +3,10 @@ function scr_player_machroll()
 	hsp = xscale * movespeed;
 	mach2 = 100;
 	machslideAnim = true;
-	move = key_right + key_left;
+	move = input.key_right.check + -input.key_left.check;
 	if (grounded)
 		sprite_index = spr_player_machroll;
-	if (((!key_down && !scr_solid(x + 27, y - 32) && !scr_solid(x - 27, y - 32) && !scr_solid(x, y - 32) && !scr_solid(x, y - 16)) || !grounded) && character == "P")
+	if (((!input.key_down.check && !scr_solid(x + 27, y - 32) && !scr_solid(x - 27, y - 32) && !scr_solid(x, y - 32) && !scr_solid(x, y - 16)) || !grounded) && character == "P")
 	{
 		sprite_index = spr_player_mach4;
 		state = states.mach3;
@@ -62,7 +62,7 @@ function scr_player_machroll()
 	if (!instance_exists(obj_cloudeffect) && grounded)
 		instance_create(x, y + 43, obj_cloudeffect);
 	image_speed = 0.8;
-	if (!key_down && (!scr_solid(x + 27, y - 32) && (!scr_solid(x - 27, y - 32) && (!scr_solid(x, y - 32) && !scr_solid(x, y - 16)))))
+	if (!input.key_down.check && (!scr_solid(x + 27, y - 32) && (!scr_solid(x - 27, y - 32) && (!scr_solid(x, y - 32) && !scr_solid(x, y - 16)))))
 	{
 		image_index = 0;
 		scr_sound(sound_rollgetup);
@@ -70,7 +70,7 @@ function scr_player_machroll()
 		if (character == "P")
 			sprite_index = spr_player_rollgetup;
 	}
-	if ((!key_down && (!scr_solid(x + 27, y - 32) && (!scr_solid(x - 27, y - 32) && (!scr_solid(x, y - 32) && !scr_solid(x, y - 16))))) && !key_attack && character == "P")
+	if ((!input.key_down.check && (!scr_solid(x + 27, y - 32) && (!scr_solid(x - 27, y - 32) && (!scr_solid(x, y - 32) && !scr_solid(x, y - 16))))) && !input.key_mach.check && character == "P")
 	{
 		image_index = 0;
 		scr_sound(sound_rollgetup);
@@ -85,7 +85,7 @@ function scr_player_machroll()
 		sprite_index = spr_dive;
 		vsp = 10;
 	}
-	if (key_jump2 && character == "N")
+	if (input.key_jump.check && character == "N")
 	{
 		sprite_index = spr_pizzano_twirl;
 		state = states.pizzanotwirl;

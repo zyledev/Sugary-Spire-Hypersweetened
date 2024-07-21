@@ -2,7 +2,7 @@ function scr_player_freefall()
 {
 	hsp = 0;
 	landAnim = true;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (!grounded)
 	{
 		hsp = move * movespeed;
@@ -42,7 +42,7 @@ function scr_player_freefall()
 		sprite_index = spr_caneslam;
 	if ((grounded && !input_buffer_jump < 8) && !place_meeting(x, y + 1, obj_destructibles))
 	{
-		if (scr_slope() && !place_meeting(x, y, obj_dashpad) && key_down && freefallsmash > 10)
+		if (scr_slope() && !place_meeting(x, y, obj_dashpad) && input.key_down.check && freefallsmash > 10)
 		{
 			flash = false;
 			state = states.machroll;
@@ -86,7 +86,7 @@ function scr_player_freefall()
 	freefallsmash++;
 	if (freefallsmash > 10 && !instance_exists(obj_groundpoundeffect))
 		instance_create_depth(x, y, -6, obj_groundpoundeffect);
-	if (key_attack2 && !grounded && vsp > 10 && instance_exists(obj_groundpoundeffect))
+	if (input.key_mach.pressed && !grounded && vsp > 10 && instance_exists(obj_groundpoundeffect))
 	{
 		if (move != 0)
 			xscale = move;

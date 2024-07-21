@@ -18,7 +18,7 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 				instance_destroy(other.id);
 				global.hit += 1;
 				global.combotime = 60;
-				if (!grounded && state != states.freefall && key_jump2)
+				if (!grounded && state != states.freefall && input.key_jump.check)
 				{
 					suplexmove = false;
 					vsp = -11;
@@ -36,7 +36,7 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 					if (x != other.baddieID.x)
 						other.baddieID.image_xscale = -sign(other.baddieID.x - x);
 					image_index = 0;
-					if (key_jump2)
+					if (input.key_jump.check)
 					{
 						other.baddieID.vsp = -5;
 						other.baddieID.hsp = -other.baddieID.image_xscale * 3;
@@ -136,7 +136,7 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 				machpunchAnim = true;
 				other.baddieID.stunned = 200;
 				other.baddieID.state = baddiestates.stun;
-				if (!grounded && state != states.freefall && key_jump2)
+				if (!grounded && state != states.freefall && input.key_jump.check)
 				{
 					suplexmove = false;
 					sprite_index = spr_mach2jump;

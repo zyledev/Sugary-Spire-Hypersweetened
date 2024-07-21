@@ -1,7 +1,7 @@
 function scr_player_runonball()
 {
-	move = key_left + key_right;
-	if (!key_attack)
+	move = -input.key_left.check + input.key_right.check;
+	if (!input.key_mach.check)
 		hsp = move * movespeed;
 	else
 		hsp = image_xscale * movespeed;
@@ -14,7 +14,7 @@ function scr_player_runonball()
 		jumpAnim = true;
 		jumpstop = false;
 	}
-	if (key_jump && grounded && !key_down && !key_attack)
+	if (input.key_jump.pressed && grounded && !input.key_down.check && !input.key_mach.check)
 	{
 		vsp = -7;
 		state = states.jump;
@@ -27,7 +27,7 @@ function scr_player_runonball()
 	}
 	movespeed = 2.5;
 	sprite_index = spr_player_slipnslide;
-	if (key_attack && grounded)
+	if (input.key_mach.check && grounded)
 	{
 		if (mach2 < 35)
 		{
@@ -37,7 +37,7 @@ function scr_player_runonball()
 		if (mach2 >= 35)
 			movespeed = 6;
 	}
-	if (!key_attack)
+	if (!input.key_mach.check)
 		mach2 = 0;
 	image_speed = 0.35;
 }

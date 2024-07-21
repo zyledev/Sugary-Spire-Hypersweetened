@@ -1,4 +1,4 @@
-scr_getinput();
+input_check(input);
 scr_characterspr();
 scr_playerstate();
 if (state != states.comingoutdoor)

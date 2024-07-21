@@ -2,7 +2,7 @@ function scr_player_Sjumpprep()
 {
 	combo = 0;
 	mach2 = 0;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (sprite_index == spr_player_superjumpprep)
 	{
 		hsp = xscale * movespeed;
@@ -44,7 +44,7 @@ function scr_player_Sjumpprep()
 	crouchAnim = true;
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_player_superjumpprep)
 		sprite_index = spr_player_superjumppreplight;
-	if (!key_up && (grounded || Sjumpcan_doublejump) && (sprite_index == spr_player_superjumppreplight || sprite_index == spr_player_superjumpleft || sprite_index == spr_player_superjumpright || sprite_index == spr_pizzano_sjumpprep) && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
+	if (!input.key_up.check && (grounded || Sjumpcan_doublejump) && (sprite_index == spr_player_superjumppreplight || sprite_index == spr_player_superjumpleft || sprite_index == spr_player_superjumpright || sprite_index == spr_pizzano_sjumpprep) && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
 	{
 		scr_sound(sound_superjumprelease);
 		instance_create(x, y, obj_explosioneffect);

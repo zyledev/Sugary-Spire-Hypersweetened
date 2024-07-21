@@ -5,9 +5,9 @@ function scr_player_cheesepep()
 	alarm[5] = 2;
 	alarm[7] = 60;
 	hurted = true;
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -16,7 +16,7 @@ function scr_player_cheesepep()
 		jumpstop = false;
 	if (sprite_index == spr_cheesepep_walk || sprite_index == spr_cheesepep_jump || sprite_index == spr_cheesepep_fall || sprite_index == spr_cheesepep_idle)
 	{
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 			hsp = move * movespeed;
 	}
 	else if (grounded)
@@ -43,9 +43,9 @@ function scr_player_cheesepep()
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_cheesepep_jumpstart)
 	{
 		vsp = -11;
-		if (key_right)
+		if (input.key_right.check)
 			hsp = 4;
-		if (-key_left)
+		if (input.key_left.check)
 			hsp = -4;
 		sprite_index = spr_cheesepep_jump;
 	}

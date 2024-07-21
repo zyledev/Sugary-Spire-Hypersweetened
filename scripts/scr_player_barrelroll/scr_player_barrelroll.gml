@@ -8,7 +8,7 @@ function scr_player_barrelroll()
 		vsp += grav;
 	if (input_buffer_jump < 5 && grounded)
 		vsp = -5;
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	if (scr_solid(x + 1, y) && image_xscale == 1)
 	{

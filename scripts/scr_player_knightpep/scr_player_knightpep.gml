@@ -5,7 +5,7 @@ function scr_player_knightpep()
 	hurted = true;
 	if (sprite_index == spr_knightpep_walk || sprite_index == spr_knightpep_jump || sprite_index == spr_knightpep_fall || sprite_index == spr_knightpep_idle)
 	{
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 		hsp = move * movespeed;
 	}
 	else if (grounded)
@@ -13,16 +13,16 @@ function scr_player_knightpep()
 		hsp = 0;
 		move = 0;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
 	}
 	if (grounded && vsp > 0)
 		jumpstop = false;
-	if ((sprite_index == spr_knightpep_idle || sprite_index == spr_knightpep_walk) && key_slap2)
+	if ((sprite_index == spr_knightpep_idle || sprite_index == spr_knightpep_walk) && input.key_attack.pressed)
 	{
 		scr_sound(20);
 		instance_create(x, y, obj_swordhitbox);
@@ -48,9 +48,9 @@ function scr_player_knightpep()
 	if (floor(image_index) == (image_number - 1) && sprite_index == spr_knightpep_jumpstart)
 	{
 		vsp = -11;
-		if (key_right)
+		if (input.key_right.check)
 			hsp = 4;
-		if (-key_left)
+		if (input.key_left.check)
 			hsp = -4;
 		sprite_index = spr_knightpep_jump;
 	}

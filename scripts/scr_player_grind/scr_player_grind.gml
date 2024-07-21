@@ -6,7 +6,7 @@ function scr_player_grind()
 	hsp = xscale * movespeed;
 	if (!grinding)
 		state = states.mach2;
-	if (key_jump)
+	if (input.key_jump.pressed)
 	{
 		vsp = -6;
 		state = states.mach2;

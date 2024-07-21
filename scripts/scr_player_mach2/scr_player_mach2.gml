@@ -7,12 +7,12 @@ function scr_player_mach2()
 			if (windingAnim < 2000)
 				windingAnim++;
 			hsp = xscale * movespeed;
-			move2 = key_right2 + key_left2;
-			move = key_right + key_left;
+			move2 = input.key_right.pressed + -input.key_left.pressed;
+			move = input.key_right.check + -input.key_left.check;
 			crouchslideAnim = true;
 			if (sprite_index != spr_null)
 			{
-				if (!key_jump2 && !jumpstop && vsp < 0.5)
+				if (!input.key_jump.check && !jumpstop && vsp < 0.5)
 				{
 					vsp /= 2;
 					jumpstop = true;
@@ -24,7 +24,7 @@ function scr_player_mach2()
 				{
 					if (grounded && vsp > 0)
 						jumpstop = false;
-					if (input_buffer_jump < 8 && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) && key_attack)
+					if (input_buffer_jump < 8 && grounded && !(move == 1 && xscale == -1) && !(move == -1 && xscale == 1) && input.key_mach.check)
 					{
 						image_index = 0;
 						sprite_index = spr_secondjump1;
@@ -34,7 +34,7 @@ function scr_player_mach2()
 				}
 				else if (character == "N")
 				{
-					if (key_jump2 && (grounded && vsp > 0) && !jumpstop)
+					if (input.key_jump.check && (grounded && vsp > 0) && !jumpstop)
 					{
 						state = states.pizzanotwirl;
 						sprite_index = spr_pizzano_twirl;
@@ -89,9 +89,9 @@ function scr_player_mach2()
 			}
 			if (sprite_index != spr_null)
 			{
-				if (key_jump)
+				if (input.key_jump.pressed)
 					input_buffer_jump = 0;
-				if (!key_attack && grounded)
+				if (!input.key_mach.check && grounded)
 				{
 					alarm[0] = 240;
 					scr_sound(sound_break);
@@ -117,7 +117,7 @@ function scr_player_mach2()
 				image_index = 0;
 				mach2 = 35;
 			}
-			if (key_down2 && grounded)
+			if (input.key_down.pressed && grounded)
 			{
 				sprite_index = spr_crouchslip;
 				if (character == "P")
@@ -145,7 +145,7 @@ function scr_player_mach2()
 				sprite_index = spr_secondjump2;
 			if (grounded && (floor(image_index) == (image_number - 1) && sprite_index == spr_player_rollgetup))
 				sprite_index = spr_mach;
-			if (key_taunt2)
+			if (input.key_taunt.pressed)
 			{
 				taunttimer = 20;
 				tauntstoredmovespeed = movespeed;
@@ -168,12 +168,12 @@ function scr_player_mach2()
 				image_speed = 0.4;
 			else
 				image_speed = 0.65;
-			if (character == "N" && key_down2)
+			if (character == "N" && input.key_down.pressed)
 			{
 				sprite_index = spr_pizzano_crouchslide;
 				state = states.machroll;
 			}
-			if (character == "N" && key_up && key_slap2 && charged)
+			if (character == "N" && input.key_up.check && input.key_attack.pressed && charged)
 			{
 				flash = true;
 				alarm[0] = 240;
@@ -181,7 +181,7 @@ function scr_player_mach2()
 				state = states.Sjump;
 				sprite_index = spr_pizzano_sjumpprep;
 			}
-			if (key_slap2 && !key_down && !suplexmove && !shotgunAnim && global.cane != true)
+			if (input.key_attack.pressed && !input.key_down.check && !suplexmove && !shotgunAnim && global.cane != true)
 			{
 				scr_sound(sound_suplex1);
 				instance_create(x, y, obj_slaphitbox);

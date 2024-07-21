@@ -8,7 +8,7 @@ function scr_shell_closeconsole()
 	{
 		obj_pause.canmove = false;
 		obj_pause.alarm[0] = 3;
-		obj_pause.key_jump = false;
+		obj_pause.input.key_confirm.pressed = false;
 	}
 	if (instance_exists(obj_mainfartselect))
 	{

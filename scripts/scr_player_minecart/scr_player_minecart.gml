@@ -1,6 +1,6 @@
 function scr_player_minecart()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	var _xscale = xscale;
 	if (place_meeting(x, y + 1, obj_minecartRail_Slope))
 	{
@@ -50,7 +50,7 @@ function scr_player_minecart()
 			}
 		}
 	}
-	if (key_jump && grounded)
+	if (input.key_jump.pressed && grounded)
 	{
 		vsp = -10;
 		image_index = 0;

@@ -8,7 +8,7 @@ function scr_player_climbwall()
 		wallspeed -= 0.25;
 	crouchslideAnim = true;
 	sprite_index = spr_climbwall;
-	if (wallspeed <= 0 || !key_attack)
+	if (wallspeed <= 0 || !input.key_mach.check)
 	{
 		state = states.jump;
 		sprite_index = spr_fall;
@@ -43,7 +43,7 @@ function scr_player_climbwall()
 			shake_mag_acc = 30 / room_speed;
 		}
 	}
-	if (key_jump && key_attack)
+	if (input.key_jump.pressed && input.key_mach.check)
 	{
 		if (mach2 >= 100)
 		{

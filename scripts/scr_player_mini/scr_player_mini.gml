@@ -4,7 +4,7 @@ function scr_player_mini()
 		sprite_index = spr_minizelle_idle;
 	grav = 0.5;
 	image_speed = 0.35;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = movespeed * xscale;
 	if (dir != xscale)
 		dir = xscale;
@@ -17,7 +17,7 @@ function scr_player_mini()
 		movespeed = 0;
 	if (movespeed != 0 && grounded && sprite_index != spr_minizelle_run && sprite_index != spr_minizelle_land)
 		sprite_index = spr_minizelle_walk;
-	if (key_jump && grounded)
+	if (input.key_jump.pressed && grounded)
 	{
 		sprite_index = spr_minizelle_jump;
 		vsp = -8;

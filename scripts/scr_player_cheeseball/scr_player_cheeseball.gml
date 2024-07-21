@@ -17,7 +17,7 @@ function scr_player_cheeseball()
 		state = states.bump;
 	}
 	sprite_index = spr_null;
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	if (input_buffer_jump < 8 && grounded)
 	{

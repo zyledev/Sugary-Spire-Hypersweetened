@@ -1,7 +1,7 @@
 function scr_player_machslide()
 {
 	hsp = xscale * movespeed;
-	move = key_right + key_left;
+	move = input.key_right.check + -input.key_left.check;
 	if (movespeed >= 0 && sprite_index != spr_player_hurtroll)
 		movespeed -= 0.4;
 	if (sprite_index == spr_player_hurtroll && grounded)

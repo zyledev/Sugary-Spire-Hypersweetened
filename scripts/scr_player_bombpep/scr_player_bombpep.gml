@@ -6,9 +6,9 @@ function scr_player_bombpep()
 		mask_index = spr_player_mask;
 	if (place_meeting(x, y, obj_watertop))
 		bombpeptimer = 0;
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -17,7 +17,6 @@ function scr_player_bombpep()
 		jumpstop = false;
 	mach2 = 0;
 	landAnim = false;
-	scr_getinput();
 	alarm[5] = 2;
 	hsp = 0;
 	movespeed = 0;

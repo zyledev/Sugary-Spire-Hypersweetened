@@ -4,7 +4,7 @@ function scr_player_barrelcrouch()
 	hsp = 0;
 	if (vsp < 12)
 		vsp += grav;
-	if (grounded && !key_down && image_speed == 0)
+	if (grounded && !input.key_down.check && image_speed == 0)
 	{
 		state = states.barrelnormal;
 		movespeed = 2;

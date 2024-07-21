@@ -1,3 +1,11 @@
+input = 
+{
+	key_jump : new Input(global.keybinds.key_jump),
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_pause : new Input(global.keybinds.key_start),
+	key_confirm : new Input(global.keybinds.key_jump)
+}
 canmove = true;
 pause = false;
 i = 0;

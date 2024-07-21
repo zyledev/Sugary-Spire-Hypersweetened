@@ -1,7 +1,7 @@
 function scr_player_pal()
 {
-	move = key_left2 + key_right2;
-	move2 = key_up2 - key_down2;
+	move = input.key_left.pressed + key_right2;
+	move2 = input.key_up.pressed - key_down2;
 	if (move != 0)
 	{
 		switch (character)
@@ -21,7 +21,7 @@ function scr_player_pal()
 		if (other.move2 != 0)
 			Selection = wrap(image_index + other.move2, 0, arrayEnd - 1);
 	}
-	if (key_slap2)
+	if (input.key_attack.pressed)
 	{
 		with (obj_playerhatselect)
 			Selection = obj_playerhat.image_index;

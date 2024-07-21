@@ -1,6 +1,6 @@
 function scr_player_highjump()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (!momemtum)
 		hsp = move * movespeed;
 	else
@@ -17,7 +17,7 @@ function scr_player_highjump()
 		movespeed = 2;
 	}
 	landAnim = true;
-	if (!key_jump2 && !jumpstop && vsp < 0)
+	if (!input.key_jump.check && !jumpstop && vsp < 0)
 	{
 		vsp /= 2;
 		jumpstop = true;
@@ -31,7 +31,7 @@ function scr_player_highjump()
 	}
 	if (grounded && vsp > 0)
 	{
-		if (key_attack)
+		if (input.key_mach.check)
 			landAnim = false;
 		state = states.normal;
 		jumpAnim = true;
@@ -44,7 +44,7 @@ function scr_player_highjump()
 		if (!audio_is_playing(sfx_land))
 			audio_play_sound(sfx_land, 1, false);
 	}
-	if (grounded && input_buffer_jump < 8 && !key_attack && !key_down && vsp > 0)
+	if (grounded && input_buffer_jump < 8 && !input.key_mach.check && !input.key_down.check && vsp > 0)
 	{
 		vsp = -9;
 		state = states.jump;
@@ -58,7 +58,7 @@ function scr_player_highjump()
 		if (!audio_is_playing(sfx_jump))
 			audio_play_sound(sfx_jump, 1, false);
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	if (jumpAnim)
 	{
@@ -71,7 +71,7 @@ function scr_player_highjump()
 	if (move != 0)
 		xscale = move;
 	image_speed = 0.35;
-	if (!grounded && key_down)
+	if (!grounded && input.key_down.check)
 	{
 		vsp = 0;
 		mach2 = 0;

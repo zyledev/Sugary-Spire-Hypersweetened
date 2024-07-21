@@ -4,7 +4,7 @@ if (image_index != Selection)
 	alarm[0] = 60;
 	fadeout = false;
 }
-if (obj_player.key_jump2 && obj_playerhat.image_index != Selection)
+if (obj_player.input.key_jump.check && obj_playerhat.image_index != Selection)
 {
 	if (HatIndex[Selection] == 1)
 	{

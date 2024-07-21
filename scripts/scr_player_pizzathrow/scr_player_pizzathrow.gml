@@ -19,14 +19,14 @@ function scr_player_pizzathrow()
 	}
 	if (instance_exists(obj_toppinsacrifice))
 	{
-		if (!obj_toppinsacrifice.throwed && key_slap2)
+		if (!obj_toppinsacrifice.throwed && input.key_attack.pressed)
 		{
 			obj_toppinsacrifice.hsp = -4;
 			obj_toppinsacrifice.throwed = 1;
 			obj_toppinsacrifice.vsp = -10;
 		}
 	}
-	if (key_slap2)
+	if (input.key_attack.pressed)
 	{
 		scr_sound(sfx_cottongone);
 		sprite_index = spr_player_pizzathrow2;

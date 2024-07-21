@@ -1,7 +1,7 @@
 function scr_pizzano_shoulderbash()
 {
 	hsp = xscale * movespeed;
-	if (key_jump && grounded)
+	if (input.key_jump.pressed && grounded)
 	{
 		state = states.pizzanotwirl;
 		vsp = -12;
@@ -34,7 +34,7 @@ function scr_pizzano_shoulderbash()
 			audio_stop_sound(sound_suplex1);
 		scr_sound(sound_bump);
 	}
-	if (key_attack && grounded)
+	if (input.key_mach.check && grounded)
 	{
 		flash = true;
 		state = states.mach2;

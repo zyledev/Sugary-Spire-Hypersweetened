@@ -15,7 +15,7 @@ function scr_player_cottonroll()
 	}
 	if (sprite_index != spr_cotton_maxrun)
 		movespeed += 0.25;
-	if (!key_attack)
+	if (!input.key_mach.check)
 	{
 		state = states.cotton;
 		sprite_index = spr_cotton_idle;
@@ -50,11 +50,11 @@ function scr_player_cottonroll()
 			image_index = 0;
 		}
 	}
-	if (grounded && sprite_index == spr_cotton_maxrun && key_jump)
+	if (grounded && sprite_index == spr_cotton_maxrun && input.key_jump.pressed)
 		vsp = -10;
-	if (grounded && sprite_index == spr_cotton_run && key_jump)
+	if (grounded && sprite_index == spr_cotton_run && input.key_jump.pressed)
 		vsp = -8;
-	if (key_down2 && !grounded && drill && sprite_index == spr_cotton_maxrun)
+	if (input.key_down.pressed && !grounded && drill && sprite_index == spr_cotton_maxrun)
 	{
 		vsp = 9;
 		state = states.cottondrill;

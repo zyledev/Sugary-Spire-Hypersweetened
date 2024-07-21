@@ -1,157 +1,121 @@
-function scr_getinput()
+enum CONTROL_TYPE
 {
-	key_up = false;
-	key_up2 = false;
-	key_right = false;
-	key_right2 = false;
-	key_left = false;
-	key_left2 = false;
-	key_down = false;
-	key_down2 = false;
-	key_jump = false;
-	key_jump2 = false;
-	key_slap = false;
-	key_slap2 = false;
-	key_taunt = false;
-	key_taunt2 = false;
-	key_attack = false;
-	key_attack2 = false;
-	key_shoot = false;
-	key_shoot2 = false;
-	key_start = false;
-	key_start2 = false;
-	key_escape = false;
-	stickpressed = false;
-	if (global.shellactivate)
-		exit;
-	if (keyboard_check_pressed(vk_f1))
-		scr_resetinput();
-	var _dvc = 0;
-	gamepad_set_axis_deadzone(_dvc, 0.4);
-	key_up = keyboard_check(global.key_up) || gamepad_button_check(_dvc, global.key_upC) || gamepad_axis_value(_dvc, gp_axislv) < 0;
-	key_up2 = keyboard_check_pressed(global.key_up) || gamepad_button_check_pressed(_dvc, global.key_upC) || (gamepad_axis_value(_dvc, gp_axislv) < -0.5 && !stickpressed);
-	key_right = keyboard_check(global.key_right) || gamepad_button_check(_dvc, global.key_rightC) || gamepad_axis_value(_dvc, gp_axislh) > 0;
-	key_right2 = keyboard_check_pressed(global.key_right) || gamepad_button_check_pressed(_dvc, global.key_rightC) || (gamepad_axis_value(_dvc, gp_axislh) > 0.5 && !stickpressed);
-	key_left = -(keyboard_check(global.key_left) || gamepad_button_check(_dvc, global.key_leftC) || gamepad_axis_value(_dvc, gp_axislh) < 0);
-	key_left2 = -(keyboard_check_pressed(global.key_left) || gamepad_button_check_pressed(_dvc, global.key_leftC) || (gamepad_axis_value(_dvc, gp_axislh) < -0.5 && !stickpressed));
-	key_down = keyboard_check(global.key_down) || gamepad_button_check(_dvc, global.key_downC) || gamepad_axis_value(_dvc, gp_axislv) > 0;
-	key_down2 = keyboard_check_pressed(global.key_down) || gamepad_button_check_pressed(_dvc, global.key_downC) || (gamepad_axis_value(_dvc, gp_axislv) > 0.5 && !stickpressed);
-	key_jump2 = keyboard_check(global.key_jump) || gamepad_button_check(_dvc, global.key_jumpC);
-	key_jump = keyboard_check_pressed(global.key_jump) || gamepad_button_check_pressed(_dvc, global.key_jumpC);
-	key_slap = keyboard_check(global.key_slap) || gamepad_button_check(_dvc, global.key_slapC);
-	key_slap2 = keyboard_check_pressed(global.key_slap) || gamepad_button_check_pressed(_dvc, global.key_slapC);
-	key_taunt = keyboard_check(global.key_taunt) || gamepad_button_check(_dvc, global.key_tauntC);
-	key_taunt2 = keyboard_check_pressed(global.key_taunt) || gamepad_button_check_pressed(_dvc, global.key_tauntC);
-	key_attack = keyboard_check(global.key_attack) || gamepad_button_check(_dvc, global.key_attackC) || gamepad_button_check(_dvc, gp_shoulderrb);
-	key_attack2 = keyboard_check_pressed(global.key_attack) || gamepad_button_check_pressed(_dvc, global.key_attackC) || gamepad_button_check_pressed(_dvc, gp_shoulderrb);
-	key_shoot = keyboard_check(global.key_shoot) || gamepad_button_check(_dvc, global.key_shootC);
-	key_shoot2 = keyboard_check_pressed(global.key_shoot) || gamepad_button_check_pressed(_dvc, global.key_shootC) || gamepad_button_check_pressed(_dvc, gp_shoulderl);
-	key_start = keyboard_check(global.key_start) || gamepad_button_check(_dvc, global.key_startC);
-	key_start2 = keyboard_check_pressed(global.key_start) || gamepad_button_check_pressed(_dvc, global.key_startC);
-	key_escape = keyboard_check_pressed(vk_escape) || gamepad_button_check(_dvc, gp_select);
-	if (gamepad_axis_value(_dvc, gp_axislh) > 0.5 || gamepad_axis_value(_dvc, gp_axislh) < -0.5 || gamepad_axis_value(_dvc, gp_axislv) > 0.5 || gamepad_axis_value(_dvc, gp_axislv) < -0.5)
-		stickpressed = true;
-	else
-		stickpressed = false;
-	return true;
+	keyboard,
+	controller,
+	mouse
 }
+// allows for on-the-fly input assignments
+function Input(_key, _type = CONTROL_TYPE.keyboard) constructor
+{
+	check = false;
+	pressed = false;
+	key = _key;
+	type = _type;
+}
+/* these are global inputs, probably not going to be used much in this project,
+   but can be a baseline for how a normal control scheme should look.
+   with my input system */
+#macro INPUTS global.inputs
+function input_init_global()
+{
+	INPUTS =
+	{
+		key_up : new Input(global.keybinds.key_up),
+		key_down : new Input(global.keybinds.key_down),
+		key_left : new Input(global.keybinds.key_left),
+		key_right : new Input(global.keybinds.key_right),
+		key_jump : new Input(global.keybinds.key_jump),
+		key_mach : new Input(global.keybinds.key_attack)
+	}
+}
+
+// run the input check, defaults to global inputs.
+function input_check(input_struct = INPUTS)
+{
+	struct_foreach(input_struct, function(_name, _value)
+	{
+		var _check, _check_pressed
+		switch (_value.type)
+		{
+			case CONTROL_TYPE.keyboard:
+				_check = keyboard_check;
+				_check_pressed = keyboard_check_pressed;
+				break;
+			case CONTROL_TYPE.controller:
+				_check = gamepad_button_check;
+				_check_pressed = gamepad_button_check_pressed;
+				break;
+			case CONTROL_TYPE.mouse:
+				_check = mouse_check_button;
+				_check_pressed = mouse_check_button_pressed;
+				break;
+		}
+		// really lazy solution to this problem but shouldnt bother anything
+		if (_value.type != CONTROL_TYPE.controller)
+		{
+			_value.check = _check(_value.key);
+			_value.pressed = _check_pressed(_value.key);
+		}
+		else
+		{
+			_value.check = _check(0, _value.key);
+			_value.pressed = _check_pressed(0, _value.key);
+		}
+	})
+}
+
 function scr_keyname(_key)
 {
-	if (_key == 37)
-		return "LEFT";
-	if (_key == 39)
-		return "RIGHT";
-	if (_key == 38)
-		return "UP";
-	if (_key == 40)
-		return "DOWN";
-	if (_key == 13)
-		return "ENTER";
-	if (_key == 27)
-		return "ESCAPE";
-	if (_key == 32)
-		return "SPACE";
-	if (_key == 16)
-		return "SHIFT";
-	if (_key == 17)
-		return "CONTROL";
-	if (_key == 18)
-		return "ALT";
-	if (_key == 8)
-		return "BACKSPACE";
-	if (_key == 9)
-		return "TAB";
-	if (_key == 36)
-		return "HOME";
-	if (_key == 35)
-		return "END";
-	if (_key == 46)
-		return "DELETE";
-	if (_key == 45)
-		return "INSERT";
-	if (_key == 33)
-		return "PAGE UP";
-	if (_key == 34)
-		return "PAGE DOWN";
-	if (_key == 19)
-		return "PAUSE";
-	if (_key == 44)
-		return "PRINTSCREEN";
-	if (_key == 112)
-		return "F1";
-	if (_key == 113)
-		return "F2";
-	if (_key == 114)
-		return "F3";
-	if (_key == 115)
-		return "F4";
-	if (_key == 116)
-		return "F5";
-	if (_key == 117)
-		return "F6";
-	if (_key == 118)
-		return "F7";
-	if (_key == 119)
-		return "F8";
-	if (_key == 120)
-		return "F9";
-	if (_key == 121)
-		return "F10";
-	if (_key == 122)
-		return "F11";
-	if (_key == 123)
-		return "F12";
-	if (_key == 96)
-		return "NUMPAD 0";
-	if (_key == 97)
-		return "NUMPAD 1";
-	if (_key == 98)
-		return "NUMPAD 2";
-	if (_key == 99)
-		return "NUMPAD 3";
-	if (_key == 100)
-		return "NUMPAD 4";
-	if (_key == 101)
-		return "NUMPAD 5";
-	if (_key == 102)
-		return "NUMPAD 6";
-	if (_key == 103)
-		return "NUMPAD 7";
-	if (_key == 104)
-		return "NUMPAD 8";
-	if (_key == 105)
-		return "NUMPAD 9";
-	if (_key == 106)
-		return "MULTIPLY";
-	if (_key == 111)
-		return "DIVIDE";
-	if (_key == 107)
-		return "ADD";
-	if (_key == 109)
-		return "SUBTRACT";
-	if (_key == 110)
-		return "DECIMAL";
-	if (_key == -1)
-		return "PRESS KEY";
-	return chr(_key);
+    switch (_key)
+	{
+        case 37: return "LEFT";
+        case 39: return "RIGHT";
+        case 38: return "UP";
+        case 40: return "DOWN";
+        case 13: return "ENTER";
+        case 27: return "ESCAPE";
+        case 32: return "SPACE";
+        case 16: return "SHIFT";
+        case 17: return "CONTROL";
+        case 18: return "ALT";
+        case 8: return "BACKSPACE";
+        case 9: return "TAB";
+        case 36: return "HOME";
+        case 35: return "END";
+        case 46: return "DELETE";
+        case 45: return "INSERT";
+        case 33: return "PAGE UP";
+        case 34: return "PAGE DOWN";
+        case 19: return "PAUSE";
+        case 44: return "PRINTSCREEN";
+        case 112: return "F1";
+        case 113: return "F2";
+        case 114: return "F3";
+        case 115: return "F4";
+        case 116: return "F5";
+        case 117: return "F6";
+        case 118: return "F7";
+        case 119: return "F8";
+        case 120: return "F9";
+        case 121: return "F10";
+        case 122: return "F11";
+        case 123: return "F12";
+        case 96: return "NUMPAD 0";
+        case 97: return "NUMPAD 1";
+        case 98: return "NUMPAD 2";
+        case 99: return "NUMPAD 3";
+        case 100: return "NUMPAD 4";
+        case 101: return "NUMPAD 5";
+        case 102: return "NUMPAD 6";
+        case 103: return "NUMPAD 7";
+        case 104: return "NUMPAD 8";
+        case 105: return "NUMPAD 9";
+        case 106: return "MULTIPLY";
+        case 111: return "DIVIDE";
+        case 107: return "ADD";
+        case 109: return "SUBTRACT";
+        case 110: return "DECIMAL";
+        case -1: return "PRESS KEY";
+        default: return chr(_key);
+    }
 }

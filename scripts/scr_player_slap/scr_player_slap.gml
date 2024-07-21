@@ -9,7 +9,7 @@ function scr_player_slap()
 			state = states.jump;
 		}
 	}
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (!momemtum)
 	{
 		hsp = move * movespeed;
@@ -39,7 +39,7 @@ function scr_player_slap()
 		momemtum = false;
 	}
 	landAnim = false;
-	if (key_slap)
+	if (input.key_attack.check)
 		slapbuffer = 0;
 	if (floor(image_index) == (image_number - 1) && slapbuffer < 8)
 	{

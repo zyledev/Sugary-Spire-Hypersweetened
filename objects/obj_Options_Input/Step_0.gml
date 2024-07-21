@@ -4,7 +4,7 @@ if (canmove)
 	ScrollY = lerp(ScrollY, (optionselected / 11) * -100, 0.15);
 	if (!selecting)
 	{
-		if ((key_up2 || keyboard_check_pressed(vk_up)) && optionselected > 0)
+		if ((input.key_up.pressed || keyboard_check_pressed(vk_up)) && optionselected > 0)
 		{
 			optionselected -= 1;
 			scr_sound(sound_step);
@@ -14,19 +14,18 @@ if (canmove)
 			optionselected += 1;
 			scr_sound(sound_step);
 		}
-		if (key_slap2 || key_start)
+		if (input.key_attack.pressed || key_start)
 		{
 			ini_open("optionData.ini");
-			ini_write_string("ControlsKeys", "up", global.key_up);
-			ini_write_string("ControlsKeys", "right", global.key_right);
-			ini_write_string("ControlsKeys", "left", global.key_left);
-			ini_write_string("ControlsKeys", "down", global.key_down);
-			ini_write_string("ControlsKeys", "jump", global.key_jump);
-			ini_write_string("ControlsKeys", "slap", global.key_slap);
-			ini_write_string("ControlsKeys", "taunt", global.key_taunt);
-			ini_write_string("ControlsKeys", "shoot", global.key_shoot);
-			ini_write_string("ControlsKeys", "attack", global.key_attack);
-			ini_write_string("ControlsKeys", "start", global.key_start);
+			ini_write_string("ControlsKeys", "up", global.keybinds.key_up);
+			ini_write_string("ControlsKeys", "right", global.keybinds.key_right);
+			ini_write_string("ControlsKeys", "left", global.keybinds.key_left);
+			ini_write_string("ControlsKeys", "down", global.keybinds.key_down);
+			ini_write_string("ControlsKeys", "jump", global.keybinds.key_jump);
+			ini_write_string("ControlsKeys", "slap", global.keybinds.key_slap);
+			ini_write_string("ControlsKeys", "taunt", global.keybinds.key_taunt);
+			ini_write_string("ControlsKeys", "attack", global.keybinds.key_attack);
+			ini_write_string("ControlsKeys", "start", global.keybinds.key_start);
 			ini_write_string("ControlsKeys", "special", global.key_special);
 			ini_close();
 			scr_sound(sound_enemythrow);
@@ -40,16 +39,15 @@ if (canmove)
 			if (key_jump || keyboard_check_pressed(vk_enter))
 			{
 				ini_open("optionData.ini");
-				ini_write_string("ControlsKeys", "up", global.key_up);
-				ini_write_string("ControlsKeys", "right", global.key_right);
-				ini_write_string("ControlsKeys", "left", global.key_left);
-				ini_write_string("ControlsKeys", "down", global.key_down);
-				ini_write_string("ControlsKeys", "jump", global.key_jump);
-				ini_write_string("ControlsKeys", "slap", global.key_slap);
-				ini_write_string("ControlsKeys", "taunt", global.key_taunt);
-				ini_write_string("ControlsKeys", "shoot", global.key_shoot);
-				ini_write_string("ControlsKeys", "attack", global.key_attack);
-				ini_write_string("ControlsKeys", "start", global.key_start);
+				ini_write_string("ControlsKeys", "up", global.keybinds.key_up);
+				ini_write_string("ControlsKeys", "right", global.keybinds.key_right);
+				ini_write_string("ControlsKeys", "left", global.keybinds.key_left);
+				ini_write_string("ControlsKeys", "down", global.keybinds.key_down);
+				ini_write_string("ControlsKeys", "jump", global.keybinds.key_jump);
+				ini_write_string("ControlsKeys", "slap", global.keybinds.key_slap);
+				ini_write_string("ControlsKeys", "taunt", global.keybinds.key_taunt);
+				ini_write_string("ControlsKeys", "attack", global.keybinds.key_attack);
+				ini_write_string("ControlsKeys", "start", global.keybinds.key_start);
 				ini_write_string("ControlsKeys", "special", global.key_special);
 				ini_close();
 				scr_sound(sound_enemythrow);
@@ -62,14 +60,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_up = keyboard_key;
+					global.keybinds.key_up = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_up = -1;
+				global.keybinds.key_up = -1;
 			}
 			break;
 		case input_selected.right:
@@ -78,14 +76,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_right = keyboard_key;
+					global.keybinds.key_right = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && selecting == 0)
 			{
 				selecting = true;
-				global.key_right = -1;
+				global.keybinds.key_right = -1;
 			}
 			break;
 		case input_selected.left:
@@ -94,14 +92,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_left = keyboard_key;
+					global.keybinds.key_left = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_left = -1;
+				global.keybinds.key_left = -1;
 			}
 			break;
 		case input_selected.down:
@@ -110,14 +108,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_down = keyboard_key;
+					global.keybinds.key_down = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_down = -1;
+				global.keybinds.key_down = -1;
 			}
 			break;
 		case input_selected.jump:
@@ -126,14 +124,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_jump = keyboard_key;
+					global.keybinds.key_jump = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_jump = -1;
+				global.keybinds.key_jump = -1;
 			}
 			break;
 		case input_selected.slap:
@@ -142,14 +140,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_slap = keyboard_key;
+					global.keybinds.key_slap = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_slap = -1;
+				global.keybinds.key_slap = -1;
 			}
 			break;
 		case input_selected.taunt:
@@ -158,14 +156,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_taunt = keyboard_key;
+					global.keybinds.key_taunt = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_taunt = -1;
+				global.keybinds.key_taunt = -1;
 			}
 			break;
 		case input_selected.shoot:
@@ -190,14 +188,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_attack = keyboard_key;
+					global.keybinds.key_attack = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_attack = -1;
+				global.keybinds.key_attack = -1;
 			}
 			break;
 		case input_selected.start:
@@ -206,14 +204,14 @@ if (canmove)
 			{
 				if (keyboard_check_pressed(vk_anykey))
 				{
-					global.key_start = keyboard_key;
+					global.keybinds.key_start = keyboard_key;
 					selecting = false;
 				}
 			}
 			if ((key_jump || keyboard_check_pressed(vk_enter)) && !selecting)
 			{
 				selecting = true;
-				global.key_start = -1;
+				global.keybinds.key_start = -1;
 			}
 			break;
 		case input_selected.special:

@@ -1,6 +1,6 @@
 function scr_player_jump()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (!momemtum)
 		hsp = move * movespeed;
 	else
@@ -33,7 +33,7 @@ function scr_player_jump()
 		momemtum = false;
 	}
 	landAnim = true;
-	if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+	if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 	{
 		vsp /= 5;
 		jumpstop = true;
@@ -45,7 +45,7 @@ function scr_player_jump()
 		vsp = grav;
 		jumpstop = true;
 	}
-	if (grounded && input_buffer_jump < 8 && !key_down && !key_attack && vsp > 0 && !(sprite_index == spr_player_facestomp || sprite_index == spr_player_freefall))
+	if (grounded && input_buffer_jump < 8 && !input.key_down.check && !input.key_mach.check && vsp > 0 && !(sprite_index == spr_player_facestomp || sprite_index == spr_player_freefall))
 	{
 		scr_sound(sound_jump);
 		sprite_index = spr_jump;
@@ -61,7 +61,7 @@ function scr_player_jump()
 		freefallstart = false;
 		instance_create_depth(x, y, 0, obj_landcloud);
 	}
-	if (key_attack && grounded && fallinganimation < 40 && !charged)
+	if (input.key_mach.check && grounded && fallinganimation < 40 && !charged)
 	{
 		mach2 = 0;
 		if (movespeed < 6)
@@ -71,7 +71,7 @@ function scr_player_jump()
 		state = states.mach1;
 		image_index = 0;
 	}
-	if (key_attack && character == "N" && charged)
+	if (input.key_mach.check && character == "N" && charged)
 	{
 		sprite_index = spr_pizzano_sjumpprepside;
 		image_index = 0;
@@ -80,7 +80,7 @@ function scr_player_jump()
 		charged = false;
 		state = states.rocketfistpizzano;
 	}
-	if (key_up && character == "N" && charged)
+	if (input.key_up.check && character == "N" && charged)
 	{
 		alarm[0] = 240;
 		sprite_index = spr_pizzano_sjumpprep;
@@ -89,7 +89,7 @@ function scr_player_jump()
 		mach2 = 0;
 		state = states.Sjump;
 	}
-	if (key_attack && grounded && fallinganimation < 40 && character == "DEEZNUTS")
+	if (input.key_mach.check && grounded && fallinganimation < 40 && character == "DEEZNUTS")
 	{
 		mach2 = 0;
 		movespeed = 0;
@@ -98,9 +98,9 @@ function scr_player_jump()
 		state = states.machpizzano;
 		image_index = 0;
 	}
-	if (grounded && vsp > 0 && !key_attack)
+	if (grounded && vsp > 0 && !input.key_mach.check)
 	{
-		if (key_attack)
+		if (input.key_mach.check)
 			landAnim = false;
 		input_buffer_secondjump = 0;
 		state = states.normal;
@@ -112,7 +112,7 @@ function scr_player_jump()
 		scr_sound(sound_step);
 		doublejumped = false;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
 	if (character == "P")
 	{
@@ -151,13 +151,13 @@ function scr_player_jump()
 		if (sprite_index == spr_stompprep && floor(image_index) == (image_number - 1))
 			sprite_index = spr_stomp;
 	}
-	if (key_attack && sprite_index != spr_airdash2 && sprite_index != spr_airdash1 && fallinganimation < 40 && character == "P")
+	if (input.key_mach.check && sprite_index != spr_airdash2 && sprite_index != spr_airdash1 && fallinganimation < 40 && character == "P")
 	{
 		stompAnim = false;
 		sprite_index = spr_airdash1;
 		image_index = 0;
 	}
-	if (key_slap2 && shotgunAnim && global.ammo > 0)
+	if (input.key_attack.pressed && shotgunAnim && global.ammo > 0)
 	{
 		global.ammo -= 1;
 		vsp -= 11;
@@ -168,14 +168,14 @@ function scr_player_jump()
 	if (move != 0)
 		xscale = move;
 	image_speed = 0.35;
-	if (key_slap2 && shotgunAnim && !instance_exists(obj_cutscene_upstairs))
+	if (input.key_attack.pressed && shotgunAnim && !instance_exists(obj_cutscene_upstairs))
 	{
 		global.ammo -= 1;
 		sprite_index = spr_shotgun_shootair;
 		state = states.shotgun;
 		image_index = 0;
 	}
-	if (key_slap2 && key_up && !suplexmove)
+	if (input.key_attack.pressed && input.key_up.check && !suplexmove)
 	{
 		grounded = false;
 		vsp = -9;
@@ -186,7 +186,7 @@ function scr_player_jump()
 		scr_sound(sound_rollgetup);
 		scr_sound(sound_suplex1);
 	}
-	if ((!key_down && key_slap2 && !suplexmove && !shotgunAnim && !global.cane) && character == "P")
+	if ((!input.key_down.check && input.key_attack.pressed && !suplexmove && !shotgunAnim && !global.cane) && character == "P")
 	{
 		scr_sound(sound_suplex1);
 		instance_create(x, y, obj_slaphitbox);
@@ -197,7 +197,7 @@ function scr_player_jump()
 		sprite_index = spr_suplexdash;
 		state = states.handstandjump;
 	}
-	if ((!key_down && key_slap2 && !suplexmove && !shotgunAnim) && sprite_index != spr_airdash1 && sprite_index != spr_airdash2 && character == "N")
+	if ((!input.key_down.check && input.key_attack.pressed && !suplexmove && !shotgunAnim) && sprite_index != spr_airdash1 && sprite_index != spr_airdash2 && character == "N")
 	{
 		scr_sound(sound_suplex1);
 		instance_create(x, y, obj_slaphitbox);
@@ -230,7 +230,7 @@ function scr_player_jump()
 		state = states.freefallland;
 		doublejumped = 0;
 	}
-	if (key_taunt2)
+	if (input.key_taunt.pressed)
 	{
 		taunttimer = 20;
 		tauntstoredmovespeed = movespeed;
@@ -249,7 +249,7 @@ function scr_player_jump()
 		}
 		instance_create(x, y, obj_taunteffect);
 	}
-	if (key_down2 && !global.cane)
+	if (input.key_down.pressed && !global.cane)
 	{
 		image_index = 0;
 		state = states.freefallprep;
@@ -260,14 +260,14 @@ function scr_player_jump()
 	{
 		if (!grounded)
 			canrebound = false;
-		if (key_down2)
+		if (input.key_down.pressed)
 		{
 			image_index = 0;
 			state = states.freefall;
 			sprite_index = spr_caneslam;
 			vsp = -18;
 		}
-		if (!key_down && key_slap2 && !suplexmove && !shotgunAnim)
+		if (!input.key_down.check && input.key_attack.pressed && !suplexmove && !shotgunAnim)
 		{
 			scr_sound(sound_suplex1);
 			instance_create(x, y, obj_slaphitbox);
@@ -285,20 +285,20 @@ function scr_player_jump()
 		if (!instance_exists(obj_mach3effect))
 			instance_create(x, y - 32, obj_mach3effect);
 	}
-	if (key_jump && character == "G" && !grounded && gumbobpropellercooldown == 0)
+	if (input.key_jump.pressed && character == "G" && !grounded && gumbobpropellercooldown == 0)
 	{
 		state = states.gumbobpropellor;
 		sprite_index = spr_gumbob_propeller_start;
 		movespeed = 0;
 		vsp = 0;
 	}
-	if (key_jump && character == "N" && !grounded && doublejumped == 0 && !scr_solid(x + xscale, y, true))
+	if (input.key_jump.pressed && character == "N" && !grounded && doublejumped == 0 && !scr_solid(x + xscale, y, true))
 	{
 		doublejumped = true;
 		vsp = -10;
 		sprite_index = spr_pizzano_djump;
 	}
-	if (key_jump && character == "N" && !grounded && scr_solid(x + xscale, y, true))
+	if (input.key_jump.pressed && character == "N" && !grounded && scr_solid(x + xscale, y, true))
 	{
 		hsp = 0;
 		vsp = 0;

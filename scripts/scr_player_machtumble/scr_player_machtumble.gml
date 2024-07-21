@@ -37,11 +37,11 @@ function scr_player_machtumble()
 		image_index = 0;
 		instance_create(x + (10 * xscale), y + 10, obj_bumpeffect);
 	}
-	if (key_slap2)
+	if (input.key_attack.pressed)
 		bufferslap = 0;
 	else if (bufferslap < 10)
 		bufferslap++;
-	if (key_down)
+	if (input.key_down.check)
 	{
 		sprite_index = spr_crouchslip;
 		machhitAnim = false;
@@ -51,7 +51,7 @@ function scr_player_machtumble()
 	}
 	if (animation_end())
 	{
-		if (key_attack)
+		if (input.key_mach.check)
 		{
 			if (mach2 < 100)
 			{
@@ -64,13 +64,13 @@ function scr_player_machtumble()
 				sprite_index = spr_player_mach4;
 			}
 		}
-		else if (!key_attack && bufferslap >= 8)
+		else if (!input.key_mach.check && bufferslap >= 8)
 		{
 			image_speed = 0.35;
 			state = states.normal;
 			grav = 0.5;
 		}
-		else if (!key_attack && bufferslap < 8)
+		else if (!input.key_mach.check && bufferslap < 8)
 		{
 			sprite_index = spr_player_machtumble;
 			image_index = 0;

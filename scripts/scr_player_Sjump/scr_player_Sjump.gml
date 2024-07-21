@@ -14,7 +14,7 @@ function scr_player_Sjump()
 	crouchslideAnim = true;
 	crouchAnim = false;
 	machhitAnim = false;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (move != 0)
 		xscale = move;
 	if (sprite_index == spr_player_superjump || sprite_index == spr_pizzano_sjump)
@@ -54,7 +54,7 @@ function scr_player_Sjump()
 		movespeed = 0;
 	}
 	image_speed = 0.5;
-	if (key_attack2 && !grounded && vsp < -10 && character == "P")
+	if (input.key_mach.pressed && !grounded && vsp < -10 && character == "P")
 	{
 		if (move != 0)
 			xscale = move;
@@ -68,7 +68,7 @@ function scr_player_Sjump()
 		with (instance_create(x, y, obj_jumpdust))
 			image_xscale = other.xscale;
 	}
-	if (key_slap2 && !grounded && vsp < -10 && character == "N")
+	if (input.key_attack.pressed && !grounded && vsp < -10 && character == "N")
 	{
 		flash = true;
 		charged = false;

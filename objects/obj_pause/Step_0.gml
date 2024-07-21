@@ -1,7 +1,7 @@
-scr_getinput();
+input_check(input);
 if (!pause && !instance_exists(obj_fadeout))
 {
-	if (!global.shellactivate && key_start2 && room != rank_room && room != realtitlescreen && canmove)
+	if (!global.shellactivate && input.key_pause.pressed && room != rank_room && room != realtitlescreen && canmove)
 	{
 		selected = 0;
 		if (!instance_exists(obj_pausefadeout))
@@ -14,18 +14,18 @@ if (pause)
 {
 	if (canmove)
 	{
-		scr_getinput();
-		if (key_down2 && selected < 3)
+		
+		if (input.key_down.pressed && selected < 3)
 		{
 			selected += 1;
 			scr_sound(sound_land);
 		}
-		if (key_up2 && selected > 0)
+		if (input.key_up.pressed && selected > 0)
 		{
 			selected -= 1;
 			scr_sound(sound_land);
 		}
-		if (key_jump)
+		if (input.key_confirm.pressed)
 		{
 			switch (selected)
 			{

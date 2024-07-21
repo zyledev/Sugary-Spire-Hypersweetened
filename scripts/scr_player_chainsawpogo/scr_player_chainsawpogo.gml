@@ -37,7 +37,7 @@ function scr_player_chainsawpogo()
 		if (!audio_is_playing(sfx_bump))
 			audio_play_sound(sfx_bump, 1, false);
 	}
-	if (!key_down)
+	if (!input.key_down.check)
 	{
 		instance_create(x, y, obj_chainsawhitbox);
 		sprite_index = spr_player_chainsawair;

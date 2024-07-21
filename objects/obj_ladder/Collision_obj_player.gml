@@ -1,6 +1,6 @@
 with (obj_player)
 {
-	if (key_up && ladderbuffer == 0 && (state == states.normal || state == states.uppercut || state == states.mach2 || state == states.mach3 || state == states.mach1 || state == states.shotgunjump || state == states.jump || state == states.highjump) && state != states.hurt && state != states.machslide && state != states.freefall && state != states.freefallland)
+	if (input.key_up.check && ladderbuffer == 0 && (state == states.normal || state == states.uppercut || state == states.mach2 || state == states.mach3 || state == states.mach1 || state == states.shotgunjump || state == states.jump || state == states.highjump) && state != states.hurt && state != states.machslide && state != states.freefall && state != states.freefallland)
 	{
 		mach2 = 0;
 		state = states.ladder;

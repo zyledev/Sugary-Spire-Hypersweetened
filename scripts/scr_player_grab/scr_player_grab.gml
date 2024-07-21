@@ -1,7 +1,7 @@
 function scr_player_grab()
 {
 	grav = 0.5;
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	if (grounded)
 	{
 		if (dir != xscale && sprite_index != spr_player_swingding)
@@ -74,7 +74,7 @@ function scr_player_grab()
 			momemtum = false;
 		}
 		landAnim = true;
-		if (!key_jump2 && !jumpstop && vsp < 0.5 && !stompAnim)
+		if (!input.key_jump.check && !jumpstop && vsp < 0.5 && !stompAnim)
 		{
 			vsp /= 10;
 			jumpstop = true;
@@ -89,9 +89,9 @@ function scr_player_grab()
 		if (move != 0 && sprite_index != spr_player_swingding)
 			xscale = move;
 	}
-	if (key_jump)
+	if (input.key_jump.pressed)
 		input_buffer_jump = 0;
-	if (grounded && input_buffer_jump < 8 && !key_down && !key_attack && vsp > 0 && sprite_index != spr_player_swingding)
+	if (grounded && input_buffer_jump < 8 && !input.key_down.check && !input.key_mach.check && vsp > 0 && sprite_index != spr_player_swingding)
 	{
 		scr_sound(sound_jump);
 		sprite_index = spr_player_haulingjump;
@@ -121,29 +121,29 @@ function scr_player_grab()
 	}
 	if (swingdingbuffer > 0)
 		swingdingbuffer -= 1;
-	if (key_slap2)
+	if (input.key_attack.pressed)
 	{
 		if (move != 0)
 			move = xscale;
 		state = states.finishingblow;
 		if (sprite_index == spr_player_swingding)
 			sprite_index = spr_player_swingdingend;
-		else if (!key_up)
+		else if (!input.key_up.check)
 			sprite_index = choose(spr_suplexmash1, spr_suplexmash2, spr_suplexmash3, spr_suplexmash4);
-		else if (key_up)
+		else if (input.key_up.check)
 			sprite_index = spr_player_uppercutfinishingblow;
 		image_index = 0;
 		hsp = 0;
 		movespeed = 0;
 	}
-	if (key_attack2)
+	if (input.key_mach.pressed)
 	{
 		sprite_index = spr_player_swingding;
 		movespeed = 10;
 		state = states.charge;
 		instance_create(x, y, obj_jumpdust);
 	}
-	if (key_down && !grounded)
+	if (input.key_down.check && !grounded)
 	{
 		sprite_index = spr_player_piledriverstart;
 		vsp = -6;
@@ -153,7 +153,7 @@ function scr_player_grab()
 	}
 	if (!instance_exists(obj_cloudeffect) && grounded && move != 0 && (floor(image_index) == 4 || floor(image_index) == 10))
 		instance_create(x, y + 43, obj_cloudeffect);
-	if (key_down && grounded)
+	if (input.key_down.check && grounded)
 	{
 		state = states.crouch;
 		landAnim = false;

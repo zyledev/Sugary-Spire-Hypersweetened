@@ -41,7 +41,7 @@ if (grabbedPlayer != -4)
 		state = states.fling;
 		if (!instance_exists(obj_candifiedeffect2))
 			instance_create(x, y, obj_candifiedeffect2);
-		move = key_left + key_right;
+		move = -input.key_left.check + input.key_right.check;
 		hsp = move * movespeed;
 		if (move != 0 && !scr_solid(x + move, y))
 		{
@@ -84,7 +84,7 @@ if (grabbedPlayer != -4)
 		grabbedPlayer = -4;
 		waitTimer = 25;
 	}
-	if (obj_player.key_jump || farBuffer >= 100)
+	if (obj_player.input.key_jump.pressed || farBuffer >= 100)
 	{
 		with (grabbedPlayer)
 		{

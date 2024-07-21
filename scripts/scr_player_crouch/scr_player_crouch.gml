@@ -1,11 +1,11 @@
 function scr_player_crouch()
 {
-	move = key_left + key_right;
+	move = -input.key_left.check + input.key_right.check;
 	hsp = move * movespeed;
 	mask_index = spr_crouchmask;
 	turning = false;
 	movespeed = 4;
-	if (!grounded && !key_jump)
+	if (!grounded && !input.key_jump.pressed)
 	{
 		jumpAnim = false;
 		state = states.crouchjump;
@@ -13,7 +13,7 @@ function scr_player_crouch()
 		crouchAnim = true;
 		image_index = 0;
 	}
-	if (key_jump && grounded && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
+	if (input.key_jump.pressed && grounded && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
 	{
 		scr_sound(sound_jump);
 		vsp = -8;
@@ -23,7 +23,7 @@ function scr_player_crouch()
 		crouchAnim = true;
 		jumpAnim = true;
 	}
-	if (grounded && !key_down && !scr_solid(x, y - 16) && !scr_solid(x, y - 32) && !key_jump)
+	if (grounded && !input.key_down.check && !scr_solid(x, y - 16) && !scr_solid(x, y - 32) && !input.key_jump.pressed)
 	{
 		state = states.normal;
 		movespeed = false;
@@ -61,7 +61,7 @@ function scr_player_crouch()
 		xscale = move;
 		crouchAnim = false;
 	}
-	if (key_taunt2 && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
+	if (input.key_taunt.pressed && !scr_solid(x, y - 16) && !scr_solid(x, y - 32))
 	{
 		taunttimer = 20;
 		tauntstoredmovespeed = movespeed;

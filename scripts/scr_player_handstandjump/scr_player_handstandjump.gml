@@ -3,7 +3,7 @@ function scr_player_handstandjump()
 	switch (character)
 	{
 		case "P":
-			move = key_left + key_right;
+			move = -input.key_left.check + input.key_right.check;
 			landAnim = false;
 			mach2 = 35;
 			hsp = xscale * movespeed;
@@ -32,7 +32,7 @@ function scr_player_handstandjump()
 				grav = 0.5;
 				flash = false;
 			}
-			if (key_down)
+			if (input.key_down.check)
 			{
 				if (grounded)
 				{
@@ -52,7 +52,7 @@ function scr_player_handstandjump()
 					vsp = -5;
 				}
 			}
-			if (key_jump && grounded)
+			if (input.key_jump.pressed && grounded)
 			{
 				movespeed = 10;
 				sprite_index = spr_mach2jump;
@@ -81,7 +81,7 @@ function scr_player_handstandjump()
 			image_speed = 0.3;
 			break;
 	}
-	if (key_attack && floor(image_index) == (image_number - 1) && sprite_index != spr_player_bump)
+	if (input.key_mach.check && floor(image_index) == (image_number - 1) && sprite_index != spr_player_bump)
 	{
 		movespeed = 10;
 		mach2 = 20;
@@ -90,7 +90,7 @@ function scr_player_handstandjump()
 	}
 	if (!global.starrmode)
 	{
-		if (key_slap2 && !key_down)
+		if (input.key_attack.pressed && !input.key_down.check)
 		{
 			sprite_index = spr_player_machtumble;
 			image_index = 0;
