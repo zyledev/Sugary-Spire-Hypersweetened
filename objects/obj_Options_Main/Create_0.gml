@@ -1,11 +1,11 @@
-enum option_selected
-{
-	back,
-	audio,
-	video,
-	input,
-	misc
-}
+//enum option_selected
+//{
+//	back,
+//	audio,
+//	video,
+//	input,
+//	misc
+//}
 image_speed = 0.35;
 CursorX = 0;
 CursorY = 0;

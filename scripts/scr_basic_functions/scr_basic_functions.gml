@@ -94,3 +94,24 @@ function string_get_split(_string, _split)
 		splits[slot] = str2;
 	return splits;
 }
+
+function save_draw_vars() constructor
+{
+	valign = draw_get_valign();
+	halign = draw_get_halign();
+	alpha = draw_get_alpha();
+	color = draw_get_color();
+	font = draw_get_font();
+}
+function load_draw_vars(_var)
+{
+	// check if were in a struct, just a little failsafe.
+	if (is_struct(_var))
+	{
+		draw_set_valign(_var.valign);
+		draw_set_halign(_var.halign);
+		draw_set_alpha(_var.alpha);
+		draw_set_color(_var.color);
+		draw_set_font(_var.font);
+	}
+}

@@ -1,10 +1,17 @@
+#macro live_auto_call if (live_call()) return live_result
 #macro IS_DEBUG (os_get_config() == "Debug")
 #macro obj_blank obj_gmliveblank
 #macro rm_blank room_gmliveblank
+
+#macro SCREEN_WIDTH 960
+#macro SCREEN_HEIGHT 540
 global.__rousr_dissonance = undefined;
 // set the controller deadzone
 gamepad_set_axis_deadzone(0, 0.4)
 
+display_set_gui_size(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+scr_initinput();
 global.PAUSEfadeoff = 0;
 global.minesProgress = false;
 global.GMLIVE_roomstart = false;
@@ -37,9 +44,9 @@ global.smoothcam = ini_read_real("Settings", "smthcam", 1);
 global.hitstunEnabled = ini_read_real("Settings", "hitstun", 1);
 global.screentilt = ini_read_real("Settings", "scrntilt", 1);
 global.playerrotate = ini_read_real("Settings", "playrot", 1);
-global.musicVolume = ini_read_real("Settings", "musicvol", 1);
-global.soundVolume = ini_read_real("Settings", "soundvol", 1);
-global.masterVolume = ini_read_real("Settings", "mastervol", 1);
+global.musicVolume = ini_read_real("Settings", "musicvol", 100) / 100;
+global.soundVolume = ini_read_real("Settings", "soundvol", 100) / 100;
+global.masterVolume = ini_read_real("Settings", "mastervol", 100) / 100;
 ini_close();
 
 audio_master_gain(global.masterVolume);
