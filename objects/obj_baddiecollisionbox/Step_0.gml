@@ -148,7 +148,7 @@ if (instance_exists(baddieID) && place_meeting(x, y, obj_player) && !obj_player.
 					instance_destroy(other.id);
 				}
 			}
-			if (instance_exists(other.baddieID) && other.baddieID.state != baddiestates.charge && !attacking && state != states.tackle && state != states.hurt && other.baddieID.y < y && other.baddieID.y > y && !grabbing && other.baddieID.state != baddiestates.stun && state != states.handstandjump && state != states.hookshot)
+			if (instance_exists(other.baddieID) && other.baddieID.state != baddiestates.charge && !attacking && state != states.tackle && state != states.hurt && !y < other.baddieID.y && !y > other.baddieID.y && !grabbing && other.baddieID.state != baddiestates.stun && state != states.handstandjump && state != states.hookshot)
 			{
 				if (x != other.baddieID.x)
 				{

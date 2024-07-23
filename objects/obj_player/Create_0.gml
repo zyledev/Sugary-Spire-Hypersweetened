@@ -1,3 +1,4 @@
+scr_initinput();
 input =
 {
 	key_up : new Input(global.keybinds.key_up),

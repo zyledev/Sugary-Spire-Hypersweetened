@@ -13,8 +13,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Old",
-    "path": "folders/Objects/Technical Stuff/Options Menu/Old.yy",
+    "name": "Options Menu",
+    "path": "folders/Objects/Technical Stuff/Options Menu.yy",
   },
   "parentObjectId": null,
   "persistent": false,
