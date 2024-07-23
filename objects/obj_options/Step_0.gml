@@ -78,11 +78,8 @@ if (!keybinding)
 }
 else
 {
-	show_debug_message("this is running")
 	if (keyboard_check_pressed(vk_anykey))
 	{
-		global.keybinds[$ key_to_change] = keyboard_lastchar;
-		keybinding = false;
-		key_to_change = undefined;
+		
 	}
 }
