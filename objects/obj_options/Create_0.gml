@@ -1,4 +1,5 @@
 // this code is a bit messy
+scr_resetinput();	
 obj_player.state = states.actor;
 input = 
 {
@@ -31,7 +32,7 @@ option_selected = 0;
 
 // keybinding
 keybinding = false;
-current_key = undefined;
+key_to_change = "";
 // argument for the callback
 options =
 {
@@ -39,7 +40,7 @@ options =
 	[
 		new_option("Toggle Fullscreen", ["Settings", "fullscrn"], OPTIONTYPE.toggle, function(_val) { window_set_fullscreen(_val); }),
 		new_option("Change Window Size", ["Settings", "resolution"], OPTIONTYPE.multichoice, function(_val) { window_size_check(_val); }, ["480X260", "960X540", "1280X720"]),
-		new_option("Smooth Camera", ["Settings", "smthcam"], OPTIONTYPE.toggle, function(_val) { global.smoothcam = _val; }),
+		new_option	("Smooth Camera", ["Settings", "smthcam"], OPTIONTYPE.toggle, function(_val) { global.smoothcam = _val; }),
 		new_option("Screen Tilt", ["Settings", "scrntilt"], OPTIONTYPE.toggle, function(_val) { global.screentilt = _val; })
 	],
 	audio : 
@@ -50,16 +51,15 @@ options =
 	],
 	input :
 	[
-		new_option("Up", ["ControlsKeys", "up"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_up); }),
-		new_option("Up", ["ControlsKeys", "right"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_right); }),
-		new_option("Up", ["ControlsKeys", "left"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_left); }),
-		new_option("Up", ["ControlsKeys", "down"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_down); }),
-		new_option("Up", ["ControlsKeys", "jump"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_jump); }),
-		new_option("Up", ["ControlsKeys", "slap"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_slap); }),
-		new_option("Up", ["ControlsKeys", "taunt"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_taunt); }),
-		new_option("Up", ["ControlsKeys", "attack"], OPTIONTYPE.keymap, function() { set_input(global.keybinds.key_attack); })
+		new_option("Up", ["ControlsKeys", "up"], OPTIONTYPE.keymap, function() { set_input("key_up"); }),
+		new_option("Right", ["ControlsKeys", "right"], OPTIONTYPE.keymap, function() { set_input("key_right"); }),
+		new_option("Left", ["ControlsKeys", "left"], OPTIONTYPE.keymap, function() { set_input("key_left"); }),
+		new_option("Down", ["ControlsKeys", "down"], OPTIONTYPE.keymap, function() { set_input("key_down"); }),
+		new_option("Jump", ["ControlsKeys", "jump"], OPTIONTYPE.keymap, function() { set_input("key_jump"); }),
+		new_option("Grab", ["ControlsKeys", "slap"], OPTIONTYPE.keymap, function() { set_input("key_slap"); }),
+		new_option("Taunt", ["ControlsKeys", "taunt"], OPTIONTYPE.keymap, function() { set_input("key_taunt"); }),
+		new_option("Attack", ["ControlsKeys", "attack"], OPTIONTYPE.keymap, function() { set_input("key_attack"); })
 	],
-	fortnite : []
 }
 
 struct_length = struct_names_count(options);
@@ -68,8 +68,8 @@ struct_names = variable_struct_get_names(options);
 array_sort(struct_names, true)
 struct_names = array_reverse(struct_names);
 
-function set_input(_key)
+function set_input(_str)
 {
 	keybinding = true;
-	current_key = _key;
+	key_to_change = _str
 }
