@@ -31,6 +31,8 @@ global.parallaxbg_surface = -4;
 global.ParallaxMap = ds_map_create();
 scr_default_parallax(true);
 global.FollowerList = ds_list_create();
+global.input_map = ds_map_create(); // basically a list of all objects that use input
+//confecti
 global.mallowfollow = false;
 global.crackfollow = false;
 global.chocofollow = false;

@@ -27,6 +27,7 @@ function input_init_global()
 		key_jump : new Input(global.keybinds.key_jump),
 		key_mach : new Input(global.keybinds.key_attack)
 	}
+	ds_map_set(global.input_map, object_get_name(object_index), input);
 }
 
 // run the input check, defaults to global inputs.
@@ -61,7 +62,20 @@ function input_check(input_struct = INPUTS)
 			_value.check = _check(0, _value.key);
 			_value.pressed = _check_pressed(0, _value.key);
 		}
+		// now heres where it gets fucky, basically this is throwing the controls into a DS map so they can all be changed
+		
 	})
+}
+
+function update_input()
+{
+	
+	var _key = ds_map_find_first(global.input_map);
+	for (var i = 0; i < ds_map_size(global.input_map); i++;)
+	{
+		
+	}
+	
 }
 
 function scr_keyname(_key)

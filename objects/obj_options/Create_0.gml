@@ -1,15 +1,19 @@
 // this code is a bit messy
 scr_resetinput();	
 obj_player.state = states.actor;
-input = 
+declare_input = function()
 {
-	key_up : new Input(global.keybinds.key_up),
-	key_down : new Input(global.keybinds.key_down),
-	key_left : new Input(global.keybinds.key_left),
-	key_right : new Input(global.keybinds.key_right),
-	key_confirm : new Input(global.keybinds.key_jump),
-	key_back : new Input(global.keybinds.key_slap)
+	input = 
+	{
+		key_up : new Input(global.keybinds.key_up),
+		key_down : new Input(global.keybinds.key_down),
+		key_left : new Input(global.keybinds.key_left),
+		key_right : new Input(global.keybinds.key_right),
+		key_confirm : new Input(global.keybinds.key_jump),
+		key_back : new Input(global.keybinds.key_slap)
+	}
 }
+declare_input();
 enum OPTIONTYPE
 {
 	toggle,
@@ -70,6 +74,7 @@ struct_names = array_reverse(struct_names);
 
 function set_input(_str)
 {
+	show_debug_message("yeah" + string(_str))
 	keybinding = true;
 	key_to_change = _str
 }

@@ -7,25 +7,25 @@ var move_x = -input.key_left.pressed + input.key_right.pressed;
 var move_x2 = -input.key_left.check + input.key_right.check;
 // DEBUG STUFF REMOVE WHEN DONE
 obj_player.state = states.actor;
-if (!keybinding)
+// category movement
+if (category_chosen == undefined)
 {
-	// category movement
-	if (category_chosen == undefined)
+	// movement
+	if (move_y != 0)
 	{
-		// movement
-		if (move_y != 0)
-		{
-			category_selected += move_y;
-			category_selected = clamp(category_selected, 0, struct_length-1);
-		}
-		// confirm button
-		if (input.key_confirm.pressed)
-			category_chosen = options[$ struct_names[category_selected]]
-		// back button
-		if (input.key_back.pressed)
-			instance_destroy();
+		category_selected += move_y;
+		category_selected = clamp(category_selected, 0, struct_length-1);
 	}
-	else // when inside category
+	// confirm button
+	if (input.key_confirm.pressed)
+		category_chosen = options[$ struct_names[category_selected]]
+	// back button
+	if (input.key_back.pressed)
+		instance_destroy();
+}
+else // when inside category
+{
+	if (!keybinding)
 	{
 		var _option_array = options[$ struct_names[category_selected]];
 		var _struct = _option_array[option_selected];
@@ -54,7 +54,6 @@ if (!keybinding)
 					break;
 			}
 		}
-
 		// confirm button
 		if (input.key_confirm.pressed)
 		{
@@ -64,25 +63,23 @@ if (!keybinding)
 		if (input.key_back.pressed)
 		{
 			// save options
-		
 			ini_open("optionData.ini");
 			for (var i = 0; i < array_length(_option_array); i++;)
 			{
-				_option_array[i].callback(_option_array[i].active_option); // run this so the options apply
 				ini_write_real(_option_array[i].ini_keys[0], _option_array[i].ini_keys[1], _option_array[i].active_option);
 			}
 			ini_close();
 			category_chosen = undefined;
 		}
+
 	}
-}
-else
-{
-	show_debug_message("this is running")
-	if (keyboard_check_pressed(vk_anykey))
+	else if (keyboard_check_pressed(vk_anykey))
 	{
-		global.keybinds[$ key_to_change] = keyboard_lastchar;
-		keybinding = false;
+		show_debug_message(ord(keyboard_lastchar))
+		global.keybinds[$ key_to_change] = ord(keyboard_lastchar);
+		show_debug_message(string(global.keybinds[$ key_to_change]))
 		key_to_change = undefined;
+		keybinding = false;
+		declare_input();
 	}
 }
