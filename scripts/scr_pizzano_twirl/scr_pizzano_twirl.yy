@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_pizzano_twirl",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Pizzano",
-    "path": "folders/Scripts/State Scripts/Pizzano.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_pizzano_twirl",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_pizzano_twirl",
+  "parent":{
+    "name":"Pizzano",
+    "path":"folders/Scripts/State Scripts/Pizzano.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

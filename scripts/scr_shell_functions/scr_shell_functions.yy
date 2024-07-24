@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_shell_functions",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Shell",
-    "path": "folders/Scripts/Functions/Shell.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_shell_functions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_shell_functions",
+  "parent":{
+    "name":"Shell",
+    "path":"folders/Scripts/Functions/Shell.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

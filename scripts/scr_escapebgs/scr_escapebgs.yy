@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_escapebgs",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Background Related",
-    "path": "folders/Scripts/Background Related.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_escapebgs",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_escapebgs",
+  "parent":{
+    "name":"Background Related",
+    "path":"folders/Scripts/Background Related.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

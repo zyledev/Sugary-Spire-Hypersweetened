@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_cutscene_gnomeMines",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Cutscene",
-    "path": "folders/Scripts/Misc./Cutscene.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_cutscene_gnomeMines",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_cutscene_gnomeMines",
+  "parent":{
+    "name":"Cutscene",
+    "path":"folders/Scripts/Misc./Cutscene.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

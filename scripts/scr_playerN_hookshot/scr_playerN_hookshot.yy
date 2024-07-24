@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "scr_playerN_hookshot",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "State Scripts",
-    "path": "folders/Scripts/State Scripts.yy",
+  "$GMScript":"v1",
+  "%Name":"scr_playerN_hookshot",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_playerN_hookshot",
+  "parent":{
+    "name":"State Scripts",
+    "path":"folders/Scripts/State Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

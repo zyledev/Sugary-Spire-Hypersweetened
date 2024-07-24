@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "GMLive_program",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Runtime",
-    "path": "folders/Extensions/GMLive/Internal/Runtime.yy",
+  "$GMScript":"v1",
+  "%Name":"GMLive_program",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GMLive_program",
+  "parent":{
+    "name":"Runtime",
+    "path":"folders/Extensions/GMLive/Internal/Runtime.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

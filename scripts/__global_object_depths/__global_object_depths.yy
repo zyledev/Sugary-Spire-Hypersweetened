@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "__global_object_depths",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Camera Functions",
-    "path": "folders/Scripts/Camera Functions.yy",
+  "$GMScript":"v1",
+  "%Name":"__global_object_depths",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"__global_object_depths",
+  "parent":{
+    "name":"Camera Functions",
+    "path":"folders/Scripts/Camera Functions.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
