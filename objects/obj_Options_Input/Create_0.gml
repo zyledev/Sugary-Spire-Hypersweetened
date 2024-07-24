@@ -13,6 +13,16 @@ enum input_selected
 	start,
 	special
 }
+input = 
+{
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_confirm : new Input(global.keybinds.key_jump),
+	key_back : new Input(global.keybinds.key_slap),
+	key_start : new Input(global.keybinds.key_start),
+	key_attack : new Input(global.keybinds.key_attack)
+	
+}
 optionselected = input_selected.back;
 scr_initinput();
 subtitle = "GO BACK TO MAIN SCREEN";

@@ -1,3 +1,14 @@
+input = 
+{
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_left : new Input(global.keybinds.key_left),
+	key_right : new Input(global.keybinds.key_right),
+	key_confirm : new Input(global.keybinds.key_jump),
+	key_back : new Input(global.keybinds.key_slap),
+	key_boost : new Input(global.keybinds.key_attack),
+	key_esc : new Input(global.keybinds.key_start)
+}
 enum audio_selected
 {
 	back,

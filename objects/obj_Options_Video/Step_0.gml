@@ -1,7 +1,7 @@
 if (canmove)
 {
-	scr_getinput();
-	if ((key_up2 || keyboard_check_pressed(vk_up)) && optionselected > 0)
+	input_check(input);
+	if ((input.key_up.pressed || keyboard_check_pressed(vk_up)) && optionselected > 0)
 	{
 		optionselected -= 1;
 		scr_sound(sound_step);
@@ -11,7 +11,7 @@ if (canmove)
 		optionsaved_screentilt = global.screentilt;
 		optionsaved_hitstun = global.hitstunEnabled;
 	}
-	if ((key_down2 || keyboard_check_pressed(vk_down)) && optionselected < 4)
+	if ((input.key_down.pressed || keyboard_check_pressed(vk_down)) && optionselected < 4)
 	{
 		optionselected += 1;
 		scr_sound(sound_step);
@@ -26,7 +26,7 @@ if (canmove)
 		case video_selected.back:
 			subtitle = "GO BACK TO MAIN SCREEN";
 			CursorY = -999;
-			if (key_jump)
+			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
 				instance_destroy();
@@ -35,9 +35,9 @@ if (canmove)
 		case video_selected.fullscreen:
 			subtitle = "TOGGLE WINDOW MODE";
 			CursorY = 100;
-			optionsaved_fullscreen += (key_right2 + key_left2);
+			optionsaved_fullscreen += (input.key_right.pressed + input.key_left.pressed);
 			optionsaved_fullscreen = wrap(optionsaved_fullscreen, 0, 1);
-			if (key_jump)
+			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
 				window_set_fullscreen(optionsaved_fullscreen);
@@ -50,9 +50,9 @@ if (canmove)
 		case video_selected.resolution:
 			subtitle = "ADJUST WINDOWED RESOLUTION";
 			CursorY = 200;
-			optionsaved_resolution += (key_right2 + key_left2);
+			optionsaved_resolution += (input.key_right.pressed + input.key_left.pressed);
 			optionsaved_resolution = wrap(optionsaved_resolution, 0, 2);
-			if (key_jump)
+			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
 				switch (optionsaved_resolution)
@@ -76,9 +76,9 @@ if (canmove)
 		case video_selected.smoothcam:
 			subtitle = "TOGGLE SMOOTHCAM";
 			CursorY = 300;
-			optionsaved_smoothcam += (key_right2 + key_left2);
+			optionsaved_smoothcam += (input.key_right.pressed + input.key_left.pressed);
 			optionsaved_smoothcam = wrap(optionsaved_smoothcam, 0, 1);
-			if (key_jump)
+			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
 				ini_open("optionData.ini");
@@ -90,9 +90,9 @@ if (canmove)
 		case video_selected.screentilt:
 			subtitle = "TOGGLE ESCAPE SCREEN TILT EFFECTS";
 			CursorY = 400;
-			optionsaved_screentilt += (key_right2 + key_left2);
+			optionsaved_screentilt += (input.key_right.pressed + input.key_left.pressed);
 			optionsaved_screentilt = wrap(optionsaved_screentilt, 0, 1);
-			if (key_jump)
+			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
 				ini_open("optionData.ini");
@@ -102,7 +102,7 @@ if (canmove)
 			}
 			break;
 	}
-	if (key_slap2 || key_start)
+	if (input.key_back.pressed || input.key_start.check)
 	{
 		scr_sound(sound_enemythrow);
 		instance_destroy();

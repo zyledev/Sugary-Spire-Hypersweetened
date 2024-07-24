@@ -6,6 +6,16 @@ enum video_selected
 	smoothcam,
 	screentilt
 };
+input = 
+{
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_left : new Input(global.keybinds.key_left),
+	key_right : new Input(global.keybinds.key_right),
+	key_confirm : new Input(global.keybinds.key_jump),
+	key_back : new Input(global.keybinds.key_slap),
+	key_start : new Input(global.keybinds.key_start)
+}
 optionselected = video_selected.back;
 ini_open("optionData.ini");
 global.fullscreen = ini_read_real("Settings", "fullscrn", 0);

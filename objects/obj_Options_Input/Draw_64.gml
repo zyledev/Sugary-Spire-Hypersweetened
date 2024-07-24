@@ -31,8 +31,5 @@ _yy += 50;
 draw_option(_x1, _yy + ScrollY, "START", optionselected == input_selected.start);
 draw_text(_x2, _yy + ScrollY, scr_keyname(global.keybinds.key_start));
 _yy += 50;
-draw_option(_x1, _yy + ScrollY, "SPECIAL", optionselected == input_selected.special);
-draw_text(_x2, _yy + ScrollY, scr_keyname(global.key_special));
-_yy += 50;
 draw_set_font(global.smallfont);
 draw_text(480, 512, subtitle);

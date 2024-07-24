@@ -6,6 +6,14 @@ enum option_selected
 	input,
 	misc
 }
+input = 
+{
+	key_up : new Input(global.keybinds.key_up),
+	key_down : new Input(global.keybinds.key_down),
+	key_confirm : new Input(global.keybinds.key_jump),
+	key_back : new Input(global.keybinds.key_slap),
+	key_start : new Input(global.keybinds.key_start)
+}
 image_speed = 0.35;
 CursorX = 0;
 CursorY = 0;
