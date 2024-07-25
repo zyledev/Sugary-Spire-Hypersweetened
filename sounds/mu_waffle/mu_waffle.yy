@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":2,
   "conversionMode":0,
-  "duration":223.164,
+  "duration":223.16476,
   "name":"mu_waffle",
   "parent":{
     "name":"Music",

@@ -581,7 +581,6 @@
     {"name":"scr_confecti_init","order":1,"path":"scripts/scr_confecti_init/scr_confecti_init.yy",},
     {"name":"scr_confecti_normal","order":2,"path":"scripts/scr_confecti_normal/scr_confecti_normal.yy",},
     {"name":"scr_confecti_taunt","order":3,"path":"scripts/scr_confecti_taunt/scr_confecti_taunt.yy",},
-    {"name":"scr_confectispr","order":4,"path":"scripts/scr_confectispr/scr_confectispr.yy",},
     {"name":"scr_cutscene_rossetteMines","order":1,"path":"scripts/scr_cutscene_rossetteMines/scr_cutscene_rossetteMines.yy",},
     {"name":"scr_cutsceneFunctions","order":2,"path":"scripts/scr_cutsceneFunctions/scr_cutsceneFunctions.yy",},
     {"name":"scr_enemy_bounce","order":1,"path":"scripts/scr_enemy_bounce/scr_enemy_bounce.yy",},

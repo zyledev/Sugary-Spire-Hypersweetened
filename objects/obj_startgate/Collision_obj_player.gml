@@ -11,7 +11,7 @@ if (sprite_index != spr_exitgateclosed)
 			state = states.victory;
 			targetDoor = other.targetDoor;
 			targetRoom = other.targetRoom;
-			audio_stop_all();
+			obj_music.is_playing = false;
 		}
 	}
 }

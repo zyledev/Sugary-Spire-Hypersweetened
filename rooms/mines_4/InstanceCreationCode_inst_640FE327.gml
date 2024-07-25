@@ -8,7 +8,7 @@ condition = function()
 output = function()
 {
     global.minesProgress = true
-    obj_music.fadeoff = 0
+    //obj_music.fadeoff = 0
     audio_stop_all_music()
 }
 

@@ -719,7 +719,6 @@
     {"id":{"name":"scr_confecti_init","path":"scripts/scr_confecti_init/scr_confecti_init.yy",},},
     {"id":{"name":"scr_confecti_normal","path":"scripts/scr_confecti_normal/scr_confecti_normal.yy",},},
     {"id":{"name":"scr_confecti_taunt","path":"scripts/scr_confecti_taunt/scr_confecti_taunt.yy",},},
-    {"id":{"name":"scr_confectispr","path":"scripts/scr_confectispr/scr_confectispr.yy",},},
     {"id":{"name":"scr_cutscene_gnomeMines","path":"scripts/scr_cutscene_gnomeMines/scr_cutscene_gnomeMines.yy",},},
     {"id":{"name":"scr_cutscene_rossetteMines","path":"scripts/scr_cutscene_rossetteMines/scr_cutscene_rossetteMines.yy",},},
     {"id":{"name":"scr_cutsceneFunctions","path":"scripts/scr_cutsceneFunctions/scr_cutsceneFunctions.yy",},},

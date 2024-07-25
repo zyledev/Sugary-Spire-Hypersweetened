@@ -1,3 +1,18 @@
+is_playing = true;
+struct_foreach(music_values, function(_name, _value) 
+{
+	array_foreach(_value.music_rooms, function(_element) { if (room == _element) { room_found = true; show_debug_message(string(_element) + string(room))}})
+	if (room_found)
+	{
+		if (_value == currently_playing)
+			exit;
+		else
+			prev_song = currently_playing;
+		currently_playing = _value;
+		room_found = false;
+	}
+});
+/*
 if (!global.panic)
 {
 	var roomname = room_get_name(room);
