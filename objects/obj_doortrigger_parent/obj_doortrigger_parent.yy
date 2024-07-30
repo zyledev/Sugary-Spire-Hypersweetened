@@ -6,8 +6,8 @@
   "name":"obj_doortrigger_parent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Door Letters",
+    "path":"folders/Objects/Gameplay/Room Transitions/Door Letters.yy",
   },
   "parentObjectId":null,
   "persistent":false,
