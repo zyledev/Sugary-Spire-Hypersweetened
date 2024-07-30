@@ -1,10 +1,11 @@
+///@description retry
 var roomname = room_get_name(room);
 if (string_letters(roomname) == "entryway" || string_letters(roomname) == "entrywaysecret")
 {
 	instance_activate_all();
 	scr_playerreset();
 	room = entryway_1;
-	pause = false;
+	global.pause = false;
 	with (obj_player)
 		targetDoor = "A";
 	with (instance_create(x, y, obj_fadeout))
@@ -18,7 +19,7 @@ else if (string_letters(roomname) == "steamy" || string_letters(roomname) == "st
 	instance_activate_all();
 	scr_playerreset();
 	room = steamy_1;
-	pause = false;
+	global.pause = false;
 	with (obj_player)
 		targetDoor = "A";
 	with (instance_create(x, y, obj_fadeout))
@@ -32,7 +33,7 @@ else if (string_letters(roomname) == "molasses" || string_letters(roomname) == "
 	instance_activate_all();
 	scr_playerreset();
 	room = molasses_1;
-	pause = 0;
+	global.pause = 0;
 	with (obj_player)
 		targetDoor = "A";
 	with (instance_create(x, y, obj_fadeout))
@@ -46,7 +47,7 @@ else if (string_letters(roomname) == "mines" || string_letters(roomname) == "min
 	instance_activate_all();
 	scr_playerreset();
 	room = mines_1;
-	pause = 0;
+	global.pause = 0;
 	with (obj_player)
 		targetDoor = "A";
 	with (instance_create(x, y, obj_fadeout))

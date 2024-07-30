@@ -1,6 +1,12 @@
 {
   "$GMWindowsOptions":"",
   "%Name":"Windows",
+  "ConfigValues":{
+    "Debug":{
+      "option_windows_borderless":"true",
+      "option_windows_resize_window":"false",
+    },
+  },
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":false,
   "option_windows_borderless":false,

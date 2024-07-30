@@ -40,7 +40,7 @@ if (canmove)
 			if (input.key_confirm.pressed)
 			{
 				scr_sound(sound_enemythrow);
-				window_set_fullscreen(optionsaved_fullscreen);
+				//gameframe_set_fullscreen(optionsaved_fullscreen);
 				ini_open("optionData.ini");
 				ini_write_real("Settings", "fullscrn", optionsaved_fullscreen);
 				ini_close();

@@ -33,7 +33,7 @@ if (currently_playing != undefined)
 /*	
 pausedmusic = global.music;
 
-if (global.panic && !obj_pause.pause && room != timesuproom)
+if (global.panic && !global.pause && room != timesuproom)
 {
 	if (!audio_is_playing(mu_escape))
 	{

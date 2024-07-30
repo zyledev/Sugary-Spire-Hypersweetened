@@ -1,3 +1,4 @@
+if (audio_is_playing(mu_pause)) audio_stop_sound(mu_pause);
 bgx++;
 bgy++;
 if (selected == 0)

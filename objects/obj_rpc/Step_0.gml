@@ -8,7 +8,7 @@ else if (global.collect > global.srank)
 	global.rpcrank = "S";
 else if (global.collect < global.crank)
 	global.rpcrank = "D";
-if (!obj_pause.pause)
+if (!global.pause)
 {
 	if (global.panic)
 		rousr_dissonance_set_timestamps(undefined, (global.minutes * 60) + global.seconds);

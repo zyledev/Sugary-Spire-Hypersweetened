@@ -1,6 +1,9 @@
 #macro IS_DEBUG (os_get_config() == "Debug")
 #macro obj_blank obj_gmliveblank
 #macro rm_blank room_gmliveblank
+
+#macro SCREEN_WIDTH 960
+#macro SCREEN_HEIGHT 540
 global.__rousr_dissonance = undefined;
 // set the controller deadzone
 gamepad_set_axis_deadzone(0, 0.4)
@@ -57,4 +60,5 @@ switch (global.selectedResolution)
 		window_set_size(1280, 720);
 		break;
 }
-//window_set_fullscreen(global.fullscreen);
+
+global.pause = false;

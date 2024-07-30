@@ -1,15 +1,15 @@
 if (fadealpha > 1 && !fadein)
 {
-	if (obj_pause.pause)
+	if (global.pause)
 	{
-		obj_pause.pause = false;
+		global.pause = false;
 		instance_activate_all();
 		audio_resume_all();
 	}
-	else if (!obj_pause.pause)
+	else if (!global.pause)
 	{
 		audio_pause_all();
-		obj_pause.pause = true;
+		global.pause = true;
 		instance_deactivate_all(true);
 		instance_activate_object(obj_pause);
 		instance_activate_object(obj_rpc);

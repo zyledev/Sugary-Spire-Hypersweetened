@@ -1,50 +1,48 @@
 input_check(input);
-if (!pause && !instance_exists(obj_fadeout))
+if (!global.pause && !instance_exists(obj_fadeout))
 {
-	if (!global.shellactivate && input.key_pause.pressed && room != rank_room && room != realtitlescreen && canmove)
+	if (!global.shellactivate && input.key_pause.pressed && room != realtitlescreen && canmove)
 	{
 		selected = 0;
-		if (!instance_exists(obj_pausefadeout))
-			instance_create(x, y, obj_pausefadeout);
+		options[0].is_selected = true;
+		event_user(0);
 	}
 }
+
 if (instance_exists(obj_pausefadeout) && instance_exists(obj_fadeout))
 	instance_destroy(obj_pausefadeout);
-if (pause)
+if (global.pause && canmove)
 {
-	if (canmove)
+	if (!audio_is_playing(mu_pause))
+		scr_soundloop(mu_pause);
+	var move = input.key_down.pressed + -input.key_up.pressed
+	if (move != 0)
 	{
-		
-		if (input.key_down.pressed && selected < 3)
-		{
-			selected += 1;
-			scr_sound(sound_land);
-		}
-		if (input.key_up.pressed && selected > 0)
-		{
-			selected -= 1;
-			scr_sound(sound_land);
-		}
-		if (input.key_confirm.pressed)
-		{
-			switch (selected)
-			{
-				case 0:
-					if (!instance_exists(obj_pausefadeout))
-						instance_create(x, y, obj_pausefadeout);
-					break;
-				case 1:
-					event_user(1);
-					break;
-				case 2:
-					event_user(2);
-					break;
-				case 3:
-					event_user(3);
-					break;
-			}
-		}
+		scr_sound(sound_land);
+		selected += move;
+		selected = clamp(selected, 0, array_length(options)-1);
+	}
+	options[selected].is_selected = true;
+	if (input.key_jump.pressed)
+		options[selected].callback();
+}
+if (instance_exists(obj_player))
+	pal = obj_player.paletteselect;
+
+for (var l = 0; l < array_length(options); l++;)
+{
+	if (global.pause)
+	{
+		// lerp x position
+		options[l].x = lerp(options[l].x, 180, 0.1)
+		// reset the selection frame
+		if l != selected
+			options[l].is_selected = false;
+		else
+			options[l].is_selected = true;
+	}
+	else
+	{
+		options[l].x = 0;
 	}
 }
-if (!pause)
-	pal = obj_player.paletteselect;

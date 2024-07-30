@@ -25,6 +25,4 @@ music_values =
 	molassessecret : new Music([molassessecret_1, molassessecret_2, molassessecret_3], mu_swampsecret, true),
 	mines : new Music([mines_1, mines_6], mu_mineshaft1),
 	minessecret : new Music([minessecret_1, minessecret_2, minessecret_3], mu_minessecret)
-
-	
 };

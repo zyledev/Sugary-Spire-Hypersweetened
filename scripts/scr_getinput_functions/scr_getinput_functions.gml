@@ -32,6 +32,8 @@ function input_init_global()
 // run the input check, defaults to global inputs.
 function input_check(input_struct = INPUTS)
 {
+	if (global.shellactivate)
+		exit;
 	struct_foreach(input_struct, function(_name, _value)
 	{
 		var _check, _check_pressed
@@ -86,7 +88,7 @@ function scr_keyname(_key)
         case 45: return "INSERT";
         case 33: return "PAGE UP";
         case 34: return "PAGE DOWN";
-        case 19: return "PAUSE";
+        case 19: return "global.pause";
         case 44: return "PRINTSCREEN";
         case 112: return "F1";
         case 113: return "F2";
