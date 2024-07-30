@@ -35,7 +35,7 @@ if (canmove)
 		case video_selected.fullscreen:
 			subtitle = "TOGGLE WINDOW MODE";
 			CursorY = 100;
-			optionsaved_fullscreen += (input.key_right.pressed + input.key_left.pressed);
+			optionsaved_fullscreen += (input.key_right.pressed + -input.key_left.pressed);
 			optionsaved_fullscreen = wrap(optionsaved_fullscreen, 0, 1);
 			if (input.key_confirm.pressed)
 			{
@@ -50,7 +50,7 @@ if (canmove)
 		case video_selected.resolution:
 			subtitle = "ADJUST WINDOWED RESOLUTION";
 			CursorY = 200;
-			optionsaved_resolution += (input.key_right.pressed + input.key_left.pressed);
+			optionsaved_resolution += (input.key_right.pressed + -input.key_left.pressed);
 			optionsaved_resolution = wrap(optionsaved_resolution, 0, 2);
 			if (input.key_confirm.pressed)
 			{
@@ -76,7 +76,7 @@ if (canmove)
 		case video_selected.smoothcam:
 			subtitle = "TOGGLE SMOOTHCAM";
 			CursorY = 300;
-			optionsaved_smoothcam += (input.key_right.pressed + input.key_left.pressed);
+			optionsaved_smoothcam += (input.key_right.pressed + -input.key_left.pressed);
 			optionsaved_smoothcam = wrap(optionsaved_smoothcam, 0, 1);
 			if (input.key_confirm.pressed)
 			{
@@ -90,7 +90,7 @@ if (canmove)
 		case video_selected.screentilt:
 			subtitle = "TOGGLE ESCAPE SCREEN TILT EFFECTS";
 			CursorY = 400;
-			optionsaved_screentilt += (input.key_right.pressed + input.key_left.pressed);
+			optionsaved_screentilt += (input.key_right.pressed + -input.key_left.pressed);
 			optionsaved_screentilt = wrap(optionsaved_screentilt, 0, 1);
 			if (input.key_confirm.pressed)
 			{
