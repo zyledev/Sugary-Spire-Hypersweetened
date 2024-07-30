@@ -1,6 +1,6 @@
 function scr_confecti_normal()
 {
-	image_alpha = obj_player.image_alpha;
+	//image_alpha = obj_player.image_alpha;
 	if (sprite_index != spr_appear)
 	{
 		if (obj_player.hsp != 0)

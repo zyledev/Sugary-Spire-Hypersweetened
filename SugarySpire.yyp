@@ -749,6 +749,7 @@
     {"id":{"name":"scr_init","path":"scripts/scr_init/scr_init.yy",},},
     {"id":{"name":"scr_layer_functions","path":"scripts/scr_layer_functions/scr_layer_functions.yy",},},
     {"id":{"name":"scr_mach_pizzano","path":"scripts/scr_mach_pizzano/scr_mach_pizzano.yy",},},
+    {"id":{"name":"scr_musicFunctions","path":"scripts/scr_musicFunctions/scr_musicFunctions.yy",},},
     {"id":{"name":"scr_optionFunctions","path":"scripts/scr_optionFunctions/scr_optionFunctions.yy",},},
     {"id":{"name":"scr_pal_swap_draw_palette","path":"scripts/scr_pal_swap_draw_palette/scr_pal_swap_draw_palette.yy",},},
     {"id":{"name":"scr_pal_swap_enable_override","path":"scripts/scr_pal_swap_enable_override/scr_pal_swap_enable_override.yy",},},

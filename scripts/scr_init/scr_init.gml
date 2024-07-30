@@ -57,4 +57,4 @@ switch (global.selectedResolution)
 		window_set_size(1280, 720);
 		break;
 }
-window_set_fullscreen(global.fullscreen);
+//window_set_fullscreen(global.fullscreen);

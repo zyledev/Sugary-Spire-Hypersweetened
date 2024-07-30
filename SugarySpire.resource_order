@@ -606,6 +606,7 @@
     {"name":"scr_hurtplayer","order":1,"path":"scripts/scr_hurtplayer/scr_hurtplayer.yy",},
     {"name":"scr_init","order":447,"path":"scripts/scr_init/scr_init.yy",},
     {"name":"scr_layer_functions","order":1,"path":"scripts/scr_layer_functions/scr_layer_functions.yy",},
+    {"name":"scr_musicFunctions","order":5,"path":"scripts/scr_musicFunctions/scr_musicFunctions.yy",},
     {"name":"scr_optionFunctions","order":4,"path":"scripts/scr_optionFunctions/scr_optionFunctions.yy",},
     {"name":"scr_pal_swap_draw_palette","order":10,"path":"scripts/scr_pal_swap_draw_palette/scr_pal_swap_draw_palette.yy",},
     {"name":"scr_pal_swap_enable_override","order":11,"path":"scripts/scr_pal_swap_enable_override/scr_pal_swap_enable_override.yy",},

@@ -27,6 +27,7 @@ function scr_soundloop(_snd, _loopBegin = 0, _loopEnd = undefined)
 		Audio = _music;
 		LoopBegin = _loopBegin;
 		LoopEnd = _loopEnd;
+		Transition_delay = 0;
 	}
 	return _music;
 }

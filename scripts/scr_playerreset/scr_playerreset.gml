@@ -186,7 +186,6 @@ function scr_playerreset()
 	}
 	with (obj_music)
 	{
-		//fadeoff = 0;
-		//audio_stop_all();
+		event_perform(ev_create, 0);
 	}
 }

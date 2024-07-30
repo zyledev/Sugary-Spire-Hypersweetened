@@ -1,15 +1,33 @@
+if (global.panic) exit;
+// start playing when in a new room
 is_playing = true;
 struct_foreach(music_values, function(_name, _value) 
 {
-	array_foreach(_value.music_rooms, function(_element) { if (room == _element) { room_found = true; show_debug_message(string(_element) + string(room))}})
+	// if it finds the room
+	array_foreach(_value.music_rooms, function(_element) { if (room == _element) { room_found = true; return; }});
 	if (room_found)
 	{
+		// if already playing music
+		if (currently_playing != undefined)
+			array_foreach(currently_playing.music_rooms, function(_element) { if (room == _element) exit; });
+		// if the music for the room is already playing then just die
 		if (_value == currently_playing)
+		{
+			room_found = false;
 			exit;
-		else
-			prev_song = currently_playing;
-		currently_playing = _value;
+		}
+		if (saved_position != undefined)
+		{
+			audio_sound_set_track_position(currently_playing.music, saved_position);
+			saved_position = undefined;
+		}
+		if (_value.is_secret)
+			saved_position = currently_playing.position;
+			
+		if (room_found)
+			currently_playing = _value;
 		room_found = false;
+		return;
 	}
 });
 /*

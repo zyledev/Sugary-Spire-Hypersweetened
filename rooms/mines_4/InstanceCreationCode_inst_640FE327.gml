@@ -8,7 +8,13 @@ condition = function()
 output = function()
 {
     global.minesProgress = true
-    //obj_music.fadeoff = 0
-    audio_stop_all_music()
+	with (obj_music)
+	{
+		audio_stop_all_music();
+		is_playing = false;
+		music_values.mines.music = mu_mineshaft2;
+		currently_playing.music = mu_mineshaft2;
+	}
+
 }
 
