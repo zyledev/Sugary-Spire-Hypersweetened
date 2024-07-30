@@ -1,7 +1,7 @@
 function scr_player_pal()
 {
-	move = input.key_left.pressed + key_right2;
-	move2 = input.key_up.pressed - key_down2;
+	move = input.key_left.pressed + input.key_right.pressed;
+	move2 = input.key_up.pressed - input.key_down.pressed;
 	if (move != 0)
 	{
 		switch (character)
