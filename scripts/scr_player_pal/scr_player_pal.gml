@@ -1,6 +1,6 @@
 function scr_player_pal()
 {
-	move = input.key_left.pressed + input.key_right.pressed;
+	move = -input.key_left.pressed + input.key_right.pressed;
 	move2 = input.key_up.pressed - input.key_down.pressed;
 	if (move != 0)
 	{
@@ -8,6 +8,9 @@ function scr_player_pal()
 		{
 			default:
 				paletteselect = wrap(paletteselect + move, 1, sprite_get_width(spr_palette) - 1);
+				ini_open("saveData.ini");
+				ini_write_real("Character", "pal", paletteselect);
+				ini_close();
 		}
 		with (obj_palexample)
 		{
