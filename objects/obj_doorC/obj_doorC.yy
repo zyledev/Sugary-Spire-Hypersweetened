@@ -32,7 +32,7 @@
   ],
   "physicsStartAwake":true,
   "properties":[
-    {"$GMObjectProperty":"v1","%Name":"id_door","filters":[],"listItems":[],"multiselect":false,"name":"id_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resource":null,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"C\"","varType":4,},
+    {"$GMObjectProperty":"v1","%Name":"id_door","filters":[],"listItems":[],"multiselect":false,"name":"id_door","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"C\"","varType":4,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

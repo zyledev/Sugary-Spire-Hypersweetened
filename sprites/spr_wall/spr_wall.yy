@@ -19,7 +19,7 @@
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"27945f4a-8387-4cd3-b5c7-517b56ca1135","blendMode":0,"displayName":"default","isLocked":false,"name":"27945f4a-8387-4cd3-b5c7-517b56ca1135","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"27945f4a-8387-4cd3-b5c7-517b56ca1135","blendMode":0,"displayName":"default","isLocked":false,"name":"27945f4a-8387-4cd3-b5c7-517b56ca1135","opacity":40.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_wall",
   "nineSlice":{
@@ -44,8 +44,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Collision",
-    "path":"folders/Sprites/Misc./Collision.yy",
+    "name":"Sprites",
+    "path":"folders/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

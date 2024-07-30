@@ -1,14 +1,14 @@
-if (y <= -1700)
-	can_goUp = false;
-if (obj_player.input.key_jump.check && !instance_exists(obj_fadeout))
+input_check(input);
+// move credits up lol
+if (max_height)
+	_y += 1
+
+if (input.key_exit.pressed)
 {
-	scr_playerreset();
-	obj_player.targetDoor = "A";
-	obj_player.targetRoom = hub_room1;
-	audio_stop_all();
-	instance_create(x, y, obj_fadeout);
+	with (instance_create(0, 0, obj_fadeout))
+	{
+		obj_player.targetRoom = realtitlescreen
+		obj_player.targetDoor = "A"
+		obj_player.state = states.titlescreen
+	}
 }
-if (can_goUp)
-	vspeed = lerp(vspeed, -1, 0.1);
-else
-	vspeed = lerp(vspeed, 0, 0.2);

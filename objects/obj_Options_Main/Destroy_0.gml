@@ -1,3 +1,5 @@
+if (instance_exists(obj_mainmenu))
+	obj_mainmenu.can_move = true;
 if (PauseMusic != -4)
 {
 	global.PAUSEfadeoff = audio_sound_get_track_position(PauseMusic);

@@ -12,8 +12,8 @@
   "name":"obj_fadeout",
   "overriddenProperties":[],
   "parent":{
-    "name":"Room Transitions",
-    "path":"folders/Objects/Gameplay/Room Transitions.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":true,
