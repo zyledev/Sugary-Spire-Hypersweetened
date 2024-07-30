@@ -50,6 +50,8 @@
     {"name":"Doors","order":3,"path":"folders/Objects/Gameplay/Room Transitions/Doors.yy",},
     {"name":"Hallways","order":4,"path":"folders/Objects/Gameplay/Room Transitions/Hallways.yy",},
     {"name":"Transformation Givers","order":7,"path":"folders/Objects/Gameplay/Transformation Givers.yy",},
+    {"name":"Hypersweetened","order":11,"path":"folders/Objects/Hypersweetened.yy",},
+    {"name":"Config Menu","order":1,"path":"folders/Objects/Hypersweetened/Config Menu.yy",},
     {"name":"Level Specific","order":3,"path":"folders/Objects/Level Specific.yy",},
     {"name":"Cottontown","order":1,"path":"folders/Objects/Level Specific/Cottontown.yy",},
     {"name":"Hub","order":3,"path":"folders/Objects/Level Specific/Hub.yy",},

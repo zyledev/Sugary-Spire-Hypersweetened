@@ -1,8 +1,6 @@
 depth = 4;
 can_collide = function(_obj = obj_player)
 {
-	if (_obj == undefined)
-		_obj = obj_player;
 	if (_obj == obj_player)
 	{
 		var wow = _obj.state == states.minecart;
