@@ -5,6 +5,7 @@
     "Debug":{
       "option_windows_borderless":"true",
       "option_windows_resize_window":"false",
+      "option_windows_icon":"icons/icon.ico",
     },
   },
   "name":"Windows",
