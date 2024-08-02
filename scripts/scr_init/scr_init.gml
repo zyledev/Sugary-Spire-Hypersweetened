@@ -8,6 +8,17 @@ global.__rousr_dissonance = undefined;
 // set the controller deadzone
 gamepad_set_axis_deadzone(0, 0.4)
 
+// create files if they dont already exist
+var filenames = ["saveData.ini", "optionData.ini", "config.hsc"]
+for (var i = 0; i < array_length(filenames); i++;)
+{
+	if (!file_exists(filenames[i]))
+	{
+		var file = file_text_open_write(filenames[i]);
+		file_text_close(file);
+		show_debug_message("created " + filenames[i])
+	}
+}
 global.PAUSEfadeoff = 0;
 global.minesProgress = false;
 global.GMLIVE_roomstart = false;

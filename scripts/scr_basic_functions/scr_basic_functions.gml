@@ -94,3 +94,20 @@ function string_get_split(_string, _split)
 		splits[slot] = str2;
 	return splits;
 }
+function file_create(_file)
+{
+	if (!file_exists(_file))
+	{
+		var _createfile = file_text_open_write(_file)
+		file_text_close(_createfile);
+	}
+}
+// thanks spaghetto
+function string_frombuffer(file)
+{
+  var buffer = buffer_load(file);
+  var read = buffer_read(buffer, buffer_string);
+  buffer_delete(buffer);
+  
+  return read;
+}
