@@ -94,16 +94,6 @@ function string_get_split(_string, _split)
 		splits[slot] = str2;
 	return splits;
 }
-// thanks spaghetto
-///@description get a string from a file, the file CANT be empty
-function string_frombuffer(file)
-{
-	var buffer = buffer_load(file);
-	var read = buffer_read(buffer, buffer_string);
-	buffer_delete(buffer);
-  
-	return read;
-}
 function file_create(_file)
 {
 	if (!file_exists(_file))
@@ -111,4 +101,29 @@ function file_create(_file)
 		var _createfile = file_text_open_write(_file)
 		file_text_close(_createfile);
 	}
+}
+// from gleb
+
+/// @func string_save()
+/// @param {String} string The string to save.
+/// @param {String} filename The filename to save the string to.
+/// @desc Saves the given string into the given filename.
+function string_save(_string, _filename) {
+    var _buff = buffer_create(string_byte_length(_string), buffer_fixed, 1);
+    buffer_write(_buff, buffer_text, _string);
+    buffer_save(_buff, _filename);
+    buffer_delete(_buff);
+}
+
+/// @func string_load()
+/// @param {String} filename The filename to load the string from.
+/// @returns {String,undefined}
+/// @desc Loads and returns a string from the given filename. Returns undefined if file doesn't exist.
+function string_load(_filename) {
+    if (!file_exists(_filename)) return undefined;
+    
+    var _buff = buffer_load(_filename);
+    var _string = buffer_read(_buff, buffer_text);
+    buffer_delete(_buff);
+    return _string;
 }

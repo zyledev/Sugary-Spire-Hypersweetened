@@ -5,7 +5,11 @@ function scr_player_mach3()
 		case "P":
 		case "N":
 			if (grounded)
+			{
+				if (sprite_index == spr_player_superjumpcancel)
+					sprite_index = spr_player_mach4;
 				Sjumpcan_doublejump = true;
+			}
 			if (windingAnim < 2000)
 				windingAnim++;
 			hsp = xscale * movespeed;

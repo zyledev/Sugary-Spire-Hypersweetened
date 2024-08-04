@@ -1505,6 +1505,8 @@
     {"name":"spr_player_stompprep","order":128,"path":"sprites/spr_player_stompprep/spr_player_stompprep.yy",},
     {"name":"spr_player_stun","order":129,"path":"sprites/spr_player_stun/spr_player_stun.yy",},
     {"name":"spr_player_superjump","order":130,"path":"sprites/spr_player_superjump/spr_player_superjump.yy",},
+    {"name":"spr_player_superjumpcancel_prep","order":163,"path":"sprites/spr_player_superjumpcancel_prep/spr_player_superjumpcancel_prep.yy",},
+    {"name":"spr_player_superjumpcancel","order":164,"path":"sprites/spr_player_superjumpcancel/spr_player_superjumpcancel.yy",},
     {"name":"spr_player_superjumpland","order":131,"path":"sprites/spr_player_superjumpland/spr_player_superjumpland.yy",},
     {"name":"spr_player_superjumpleft","order":132,"path":"sprites/spr_player_superjumpleft/spr_player_superjumpleft.yy",},
     {"name":"spr_player_superjumpprep","order":133,"path":"sprites/spr_player_superjumpprep/spr_player_superjumpprep.yy",},

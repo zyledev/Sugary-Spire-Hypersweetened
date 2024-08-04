@@ -284,6 +284,7 @@
     {"$GMFolder":"","%Name":"Timelines","folderPath":"folders/Timelines.yy","name":"Timelines","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "IncludedFiles":[
+    {"$GMIncludedFile":"","%Name":"config.yaml","CopyToMask":-1,"filePath":"datafiles","name":"config.yaml","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"credits.txt","CopyToMask":-1,"filePath":"datafiles","name":"credits.txt","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gc.dll","CopyToMask":0,"filePath":"datafiles/GMLive","name":"gc.dll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
     {"$GMIncludedFile":"","%Name":"gcmt-dll.dll","CopyToMask":-1,"filePath":"datafiles/GMLive","name":"gcmt-dll.dll","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
@@ -1766,6 +1767,8 @@
     {"id":{"name":"spr_player_stompprep","path":"sprites/spr_player_stompprep/spr_player_stompprep.yy",},},
     {"id":{"name":"spr_player_stun","path":"sprites/spr_player_stun/spr_player_stun.yy",},},
     {"id":{"name":"spr_player_superjump","path":"sprites/spr_player_superjump/spr_player_superjump.yy",},},
+    {"id":{"name":"spr_player_superjumpcancel_prep","path":"sprites/spr_player_superjumpcancel_prep/spr_player_superjumpcancel_prep.yy",},},
+    {"id":{"name":"spr_player_superjumpcancel","path":"sprites/spr_player_superjumpcancel/spr_player_superjumpcancel.yy",},},
     {"id":{"name":"spr_player_superjumpland","path":"sprites/spr_player_superjumpland/spr_player_superjumpland.yy",},},
     {"id":{"name":"spr_player_superjumpleft","path":"sprites/spr_player_superjumpleft/spr_player_superjumpleft.yy",},},
     {"id":{"name":"spr_player_superjumpprep","path":"sprites/spr_player_superjumpprep/spr_player_superjumpprep.yy",},},

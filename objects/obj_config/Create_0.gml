@@ -7,7 +7,7 @@ function make_config(_name, _ini_keys)
 {
 	return { name : _name, ini_keys : _ini_keys, value : ini_read_real(_ini_keys[0], _ini_keys[1], 0)}
 }
-filedir = working_directory + "config.yaml";
+filedir = "config.yaml";
 
 obj_player.state = states.titlescreen;
 input = 

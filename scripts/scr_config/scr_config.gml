@@ -6,31 +6,34 @@ global.baseconfig =
 }
 CONFIG = {}
 
-
-if (!file_exists("config.yaml"))
+function config_load()
 {
-	CONFIG = global.baseconfig;
-	var _file = file_text_open_write("config.yaml");
-	file_text_write_string(_file, SnapToYAML(CONFIG));
-	file_text_close(_file);
-}
-else
-{
-	var _buffer = buffer_load("config.yaml");
-	CONFIG = SnapBufferReadYAML(_buffer, 0);
-	buffer_delete(_buffer);
-}
-
-// hacky solution incoming!!!
-struct_foreach(global.baseconfig, function(_name, _value) 
-{
-	if (!variable_struct_exists(CONFIG, _name))
+	if (!file_exists("config.yaml")) // if the file doesnt exist, make it the base config.
 	{
-		CONFIG = global.baseconfig;
-		var _file = file_text_open_write("config.yaml");
-		file_text_write_string(_file, SnapToYAML(CONFIG));
-		file_text_close(_file);
-		show_message("There was an issue with the config file!\nResetting gameplay configuration.");
-		exit;
+		var _string = SnapToYAML(global.baseconfig, true);
+		string_save(_string, "config.yaml");
 	}
-});
+	else // else update the config from the yaml file
+	{
+		var _string = string_load("config.yaml");
+		CONFIG = SnapFromYAML(_string);
+	}
+}
+function config_check_integrity()
+{
+	// hacky solution incoming!!!
+	struct_foreach(global.baseconfig, function(_name, _value) 
+	{
+		if (!struct_exists(CONFIG, _name))
+		{
+			CONFIG = global.baseconfig;
+			var _file = file_text_open_write("config.yaml");
+			file_text_write_string(_file, SnapToYAML(CONFIG));
+			file_text_close(_file);
+			show_message("There was an issue with the config file!\nResetting configuration.");
+			exit;
+		}
+	});
+}
+config_load();
+config_check_integrity();

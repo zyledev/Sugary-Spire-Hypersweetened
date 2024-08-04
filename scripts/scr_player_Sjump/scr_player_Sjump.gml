@@ -54,7 +54,18 @@ function scr_player_Sjump()
 		movespeed = 0;
 	}
 	image_speed = 0.5;
-	if (input.key_mach.pressed && !grounded && vsp < -10 && character == "P")
+	if CONFIG.Superjump_Cancel_Animation && character != "N"
+	{
+		if (input.key_mach.pressed && !grounded && character == "P")
+		{
+			sprite_index = spr_player_superjumpcancel_prep;
+			hsp = 0;
+			movespeed = 0;
+			vsp = 0;
+
+		}
+	}
+	else if (input.key_mach.pressed && !grounded && vsp < -10 && character == "P")
 	{
 		if (move != 0)
 			xscale = move;
@@ -67,6 +78,26 @@ function scr_player_Sjump()
 		sprite_index = spr_player_dashpad;
 		with (instance_create(x, y, obj_jumpdust))
 			image_xscale = other.xscale;
+	}
+	if (sprite_index == spr_player_superjumpcancel_prep)
+	{
+		hsp = 0;
+		movespeed = 0;
+		vsp = 0;
+		if animation_end()
+		{
+			if (move != 0)
+				xscale = move;
+			movespeed = 12;
+			machhitAnim = false;
+			state = states.mach3;
+			flash = true;
+			vsp = -4;
+			image_index = 0;
+			sprite_index = spr_player_superjumpcancel;
+			with (instance_create(x, y, obj_jumpdust))
+				image_xscale = other.xscale;
+		}
 	}
 	if (input.key_attack.pressed && !grounded && vsp < -10 && character == "N")
 	{

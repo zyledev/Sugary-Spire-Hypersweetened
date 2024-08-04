@@ -1,0 +1,5 @@
+# Toggles the animation for the Superjump-Cancel.
+# true / false
+Superjump_Cancel_Animation: false
+
+#
