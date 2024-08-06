@@ -11,7 +11,7 @@ global.pause = false;
 
 function create_pausebutton(_name, _callback)
 {
-	return { name : _name, callback : _callback, x : 0, is_selected : false }
+	return { name : _name, callback : _callback, x : 0, is_selected : false };
 }
 
 options = 

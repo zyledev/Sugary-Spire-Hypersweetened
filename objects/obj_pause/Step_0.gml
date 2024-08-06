@@ -33,16 +33,16 @@ for (var l = 0; l < array_length(options); l++;)
 {
 	if (global.pause)
 	{
-		// lerp x position
-		options[l].x = lerp(options[l].x, 180, 0.1)
-		// reset the selection frame
-		if l != selected
-			options[l].is_selected = false;
+		if (selected == l)
+			options[l].x = lerp(options[l].x, 200, 0.1);
 		else
-			options[l].is_selected = true;
+			options[l].x = lerp(options[l].x, 180, 0.1);
+		// reset the selection frame
+		options[l].is_selected = (selected == l)
 	}
 	else
 	{
 		options[l].x = 0;
 	}
+
 }

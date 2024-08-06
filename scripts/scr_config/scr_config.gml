@@ -35,5 +35,6 @@ function config_check_integrity()
 		}
 	});
 }
+
 config_load();
-config_check_integrity();
+config_check_integrity(); 

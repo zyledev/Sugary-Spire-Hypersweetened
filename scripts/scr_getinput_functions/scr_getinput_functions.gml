@@ -9,6 +9,7 @@ function Input(_key, _type = CONTROL_TYPE.keyboard) constructor
 {
 	check = false;
 	pressed = false;
+	released = false;
 	key = _key;
 	type = _type;
 }
@@ -36,20 +37,23 @@ function input_check(input_struct = INPUTS)
 		exit;
 	struct_foreach(input_struct, function(_name, _value)
 	{
-		var _check, _check_pressed
+		var _check, _check_pressed, _released
 		switch (_value.type)
 		{
 			case CONTROL_TYPE.keyboard:
 				_check = keyboard_check;
 				_check_pressed = keyboard_check_pressed;
+				_released = keyboard_check_released;
 				break;
 			case CONTROL_TYPE.controller:
 				_check = gamepad_button_check;
 				_check_pressed = gamepad_button_check_pressed;
+				_released = gamepad_button_check_released;
 				break;
 			case CONTROL_TYPE.mouse:
 				_check = mouse_check_button;
 				_check_pressed = mouse_check_button_pressed;
+				_released = mouse_check_button_released;
 				break;
 		}
 		// really lazy solution to this problem but shouldnt bother anything
@@ -57,11 +61,13 @@ function input_check(input_struct = INPUTS)
 		{
 			_value.check = _check(_value.key);
 			_value.pressed = _check_pressed(_value.key);
+			_value.released = _released(_value.key);
 		}
 		else
 		{
 			_value.check = _check(0, _value.key);
 			_value.pressed = _check_pressed(0, _value.key);
+			_value.released = _released(0, _value.key);
 		}
 	})
 }
